@@ -8,14 +8,23 @@ import javax.persistence.*;
 public class User {
 
     @Id
-    private String Id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer Id;
     private String Name;
 
-    public String getId() {
+    User(){}
+
+    User(Integer id, String name)
+    {
+        Id = id;
+        Name = name;
+    }
+
+    public Integer getId() {
         return Id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         Id = id;
     }
 

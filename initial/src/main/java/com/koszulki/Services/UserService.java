@@ -24,7 +24,7 @@ public class UserService {
         return users;
     }
 
-    public User getUser(String id)
+    public User getUser(Integer id)
     {
         return userRepository.findOne(id);
     }
