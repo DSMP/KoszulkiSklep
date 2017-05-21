@@ -1,7 +1,7 @@
 package com.koszulki.Services;
 
-import com.koszulki.Entity.User;
 import com.koszulki.DAO.IUserRepository;
+import com.koszulki.Entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +24,7 @@ public class UserService {
         return users;
     }
 
-    public User getUser(int id)
+    public User getUser(String id)
     {
         return userRepository.findOne(id);
     }

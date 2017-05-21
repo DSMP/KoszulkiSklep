@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 /**
  * Created by Damian on 17.05.2017.
  */
-public interface IBilboardRepository extends CrudRepository<Bilboard, Integer> {
-}
+//public interface IBilboardRepository extends CrudRepository<Bilboard, Integer> {
+//}

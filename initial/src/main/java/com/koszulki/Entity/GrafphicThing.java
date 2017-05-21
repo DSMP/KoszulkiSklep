@@ -1,6 +1,6 @@
 package com.koszulki.Entity;
 
-import javax.persistence.Id;
+
 
 
 /**
@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 public class GrafphicThing {
 
-    @Id
+
     int Id;
     String Name;
     Byte[] Photo;

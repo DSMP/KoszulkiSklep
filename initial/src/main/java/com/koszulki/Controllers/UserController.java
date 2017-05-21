@@ -1,7 +1,7 @@
 package com.koszulki.Controllers;
 
-import com.koszulki.Services.UserService;
 import com.koszulki.Entity.User;
+import com.koszulki.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,9 +23,4 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @RequestMapping("/users")
-    public String cos()
-    {
-        return "Hello qwerty";
-    }
 }
