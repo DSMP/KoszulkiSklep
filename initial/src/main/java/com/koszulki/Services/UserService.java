@@ -1,7 +1,7 @@
 package com.koszulki.Services;
 
 import com.koszulki.DAO.IUserRepository;
-import com.koszulki.Entity.User;
+import com.koszulki.Entity.MyUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,20 +17,20 @@ public class UserService {
     @Autowired
     private IUserRepository userRepository;
 
-    public List<User> getAllUsers()
+    public List<MyUser> getAllUsers()
     {
-        List<User> users = new ArrayList<>();
-        userRepository.findAll().forEach(users::add);
-        return users;
+        List<MyUser> myUsers = new ArrayList<>();
+        userRepository.findAll().forEach(myUsers::add);
+        return myUsers;
     }
 
-    public User getUser(Integer id)
+    public MyUser getUser(Integer id)
     {
         return userRepository.findOne(id);
     }
 
-    public void addUser(User user)
+    public void addUser(MyUser myUser)
     {
-        userRepository.save(user);
+        userRepository.save(myUser);
     }
 }

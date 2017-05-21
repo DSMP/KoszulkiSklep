@@ -1,6 +1,6 @@
 package com.koszulki.Controllers;
 
-import com.koszulki.Entity.User;
+import com.koszulki.Entity.MyUser;
 import com.koszulki.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +18,7 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("/users")
-    public List<User> getAllUsers()
+    public List<MyUser> getAllUsers()
     {
         return userService.getAllUsers();
     }

@@ -1,20 +1,22 @@
 package com.koszulki.Entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
+
 /**
  * Created by Damian on 09.05.2017.
  */
 @Entity
-public class User {
+public class MyUser implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer Id;
     private String Name;
 
-    User(){}
+    MyUser(){}
 
-    User(Integer id, String name)
+    MyUser(Integer id, String name)
     {
         Id = id;
         Name = name;
@@ -34,5 +36,10 @@ public class User {
 
     public void setName(String name) {
         Name = name;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }
