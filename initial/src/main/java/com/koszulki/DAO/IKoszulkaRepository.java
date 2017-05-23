@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 /**
  * Created by Damian on 17.05.2017.
  */
-//public interface IKoszulkaRepository extends CrudRepository<Koszulka,Integer> {
-//}
+public interface IKoszulkaRepository extends CrudRepository<Koszulka,Integer> {
+}
