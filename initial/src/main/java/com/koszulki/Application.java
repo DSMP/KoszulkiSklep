@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Arrays;
 
 @SpringBootApplication
-//@ComponentScan({"com.koszulki.Controllers.*","com.koszulki.DAO.*"})
 public class Application {
     
     public static void main(String[] args) {
