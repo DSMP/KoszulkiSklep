@@ -12,17 +12,17 @@ public class MyUserRole {
     @Column(name = "role_id")
     private Integer Id;
 
-    private String username;
+    private String role;
 
     public MyUserRole() {
     }
 
-    public String getUsername() {
-        return username;
+    public String getRole() {
+        return role;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public Integer getId() {

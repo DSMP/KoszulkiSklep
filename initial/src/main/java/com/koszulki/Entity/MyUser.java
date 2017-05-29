@@ -1,5 +1,7 @@
 package com.koszulki.Entity;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -11,16 +13,20 @@ import java.util.Set;
 public class MyUser implements Serializable{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO) // zmienic na identity
     @Column(name = "user_id")
     private Integer Id;
     private String Name;
     private String Email;
+    @NotEmpty(message = "*Please provide your password")
+    private String password;
+    private Integer Active;
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<MyUserRole> Roles;
 
-    MyUser(){}
+    public MyUser(){}
 
     MyUser(Integer id, String name)
     {
@@ -58,6 +64,22 @@ public class MyUser implements Serializable{
 
     public void setRoles(Set<MyUserRole> roles) {
         Roles = roles;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Integer getActive() {
+        return Active;
+    }
+
+    public void setActive(Integer active) {
+        Active = active;
     }
 
     @Override

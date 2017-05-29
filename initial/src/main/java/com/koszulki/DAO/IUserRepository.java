@@ -1,6 +1,7 @@
 package com.koszulki.DAO;
 
 import com.koszulki.Entity.MyUser;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -8,4 +9,6 @@ import org.springframework.data.repository.CrudRepository;
  */
 
 public interface IUserRepository extends CrudRepository<MyUser, Integer> {
+//    MyUser findByEmail(String email);
+
 }
