@@ -5,6 +5,7 @@ import com.koszulki.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,7 +18,7 @@ import java.util.List;
 /**
  * Created by Damian on 17.05.2017.
  */
-@RestController
+@Controller
 public class UserController {
 
     @Autowired
@@ -58,7 +59,7 @@ public class UserController {
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("registration");
         } else {
-            userService.addUser(user);
+            userService.register(user);
             modelAndView.addObject("successMessage", "User has been registered successfully");
             modelAndView.addObject("user", new MyUser());
             modelAndView.setViewName("registration");
@@ -67,14 +68,21 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequestMapping(value="/admin/home", method = RequestMethod.GET)
-    public ModelAndView home(){
+    @RequestMapping(value="/admin/hello", method = RequestMethod.GET)
+    public ModelAndView hello(){
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         MyUser user = userService.findUserByEmail(auth.getName());
         modelAndView.addObject("userName", "Welcome " + user.getName() + " (" + user.getEmail() + ")");
         modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
-        modelAndView.setViewName("admin/home");
+        modelAndView.setViewName("admin/hello");
+        return modelAndView;
+    }
+    @RequestMapping("index")
+    public ModelAndView index()
+    {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("index");
         return modelAndView;
     }
 }
