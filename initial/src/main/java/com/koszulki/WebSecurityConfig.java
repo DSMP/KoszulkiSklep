@@ -1,5 +1,6 @@
 package com.koszulki;
 
+import com.koszulki.Components.SimpleAuthenticationSuccesHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -35,17 +36,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${spring.queries.roles-query}")
     private String rolesQuery;
 
+    @Autowired
+    private SimpleAuthenticationSuccesHandler successHandler;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.
                 authorizeRequests()
-                .antMatchers("/").permitAll()
+                .antMatchers("/","/index").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/registration").permitAll()
                 .antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
                 .authenticated().and().csrf().disable().formLogin()
                 .loginPage("/login").failureUrl("/login?error=true")
-                .defaultSuccessUrl("/admin/hello")
+                .successHandler(successHandler)
+//                .defaultSuccessUrl("/admin/hello")
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .and().logout()

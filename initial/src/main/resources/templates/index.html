@@ -6,9 +6,9 @@
     <title>index</title>
 </head>
 <body>
-<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
-<form th:action="@{/logout}" method="post">
-    <input type="submit" value="Sign Out"/>
+<h1 th:inline="text">Hello on my page! [[${#httpServletRequest.remoteUser}]]</h1>
+<form th:action="@{/login}" method="get">
+    <input type="submit" value="zaloguj"/>
 </form>
 </body>
 </html>

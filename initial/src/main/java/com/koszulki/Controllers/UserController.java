@@ -85,4 +85,17 @@ public class UserController {
         modelAndView.setViewName("index");
         return modelAndView;
     }
+    @RequestMapping(value = "/admin", method = RequestMethod.GET)
+    public ModelAndView admin() {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("admin/hello");
+        return model;
+    }
+
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public ModelAndView user() {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("index");
+        return model;
+    }
 }

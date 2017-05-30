@@ -59,10 +59,11 @@ public class UserService {
         List<MyUserRole> MyUserRole = (List<com.koszulki.Entity.MyUserRole>) roleRepository.findAll();
         MyUserRole userRole = null;
         for (int i = 0; i < MyUserRole.size(); i++) {
-            if (MyUserRole.get(i).getRole().equals("ADMIN"))
+            if (MyUserRole.get(i).getRole().equals("USER"))
                 userRole = MyUserRole.get(i);
         }
         user.setRoles(new HashSet<MyUserRole>(Arrays.asList(userRole)));
         userRepository.save(user);
     }
+
 }
