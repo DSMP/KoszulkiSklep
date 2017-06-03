@@ -11,7 +11,7 @@ import javax.persistence.Id;
 @Entity
 public class Koszulka extends GrafphicThing {
 
-    int Size;
+    int size;
 
     public Koszulka() {
     }

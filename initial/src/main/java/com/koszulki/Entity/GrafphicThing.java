@@ -13,10 +13,10 @@ public abstract class GrafphicThing
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer Id;
+    private Integer id;
 
-    String Name;
-    Byte[] Picture;
+    String name;
+    Byte[] picture;
 
 }
 

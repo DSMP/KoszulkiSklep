@@ -15,9 +15,9 @@ public class MyUser implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) // zmienic na identity
     @Column(name = "user_id")
-    private Integer Id;
-    private String Name;
-    private String Email;
+    private Integer id;
+    private String name;
+    private String email;
     @NotEmpty(message = "*Please provide your password")
     private String password;
     private Integer Active;
@@ -30,32 +30,32 @@ public class MyUser implements Serializable{
 
     MyUser(Integer id, String name)
     {
-        Id = id;
-        Name = name;
+        this.id = id;
+        this.name = name;
     }
 
     public Integer getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Integer id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public Set<MyUserRole> getRoles() {
