@@ -14,8 +14,8 @@ import org.springframework.stereotype.Service;
 public class KoszulkiService {
     @Autowired
     private IKoszulkaRepository koszulkiRepo;
-    public Page<Koszulka> getAllkoszulki(Pageable pagable)
+    public Page<Koszulka> getAllKoszulki(Pageable pagable)
     {
-        return koszulkiRepo.getAllByIdOrderByIdAsc(pagable);
+        return koszulkiRepo.getAll(pagable);
     }
 }

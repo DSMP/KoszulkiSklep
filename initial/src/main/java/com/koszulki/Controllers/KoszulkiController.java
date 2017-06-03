@@ -21,7 +21,7 @@ public class KoszulkiController {
     @RequestMapping(value = "/koszulki", method = RequestMethod.GET)
     public String blog(Model uiModel, Pageable pageable) {
         PageWrapper<Koszulka> page = new PageWrapper<Koszulka>
-        (koszulkiService.getAllkoszulki(pageable), "/koszulki");
+        (koszulkiService.getAllKoszulki(pageable), "/koszulki");
         uiModel.addAttribute("page", page);
         return "koszulki";
     }
