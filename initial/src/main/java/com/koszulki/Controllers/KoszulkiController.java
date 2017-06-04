@@ -7,12 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.io.Console;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 
 /**
  * Created by Damian on 03.06.2017.
@@ -34,16 +39,24 @@ public class KoszulkiController {
     public ModelAndView addKoszulka()
     {
         ModelAndView mav = new ModelAndView();
-        mav.addObject("koszulka", new Koszulka());
+//        mav.addObject("koszulka", new Koszulka());
         mav.setViewName("admin/addkoszulka");
         return mav;
     }
 
     @RequestMapping(value = "/admin/addkoszulka", method = RequestMethod.POST)
-    public String addKoszulka(@Valid Koszulka koszulka)
-    {
+    public String addKoszulka(@RequestParam String name, @RequestParam MultipartFile picture, @RequestParam Integer size) throws IOException {
+        Koszulka koszulka= new Koszulka();
+        koszulka.setName(name); koszulka.setPicture(picture.getBytes()); koszulka.setSize(size);
         koszulkiService.addKoszulka(koszulka);
         return "admin/hello";
     }
+    @RequestMapping(value = "image/{imageName}")
+    @ResponseBody
+    public byte[] getImage(@PathVariable(value = "imageName") String imageName) throws IOException {
 
+        File serverFile = new File("/home/user/uploads/" + imageName + ".jpg");
+
+        return Files.readAllBytes(serverFile.toPath());
+    }
 }

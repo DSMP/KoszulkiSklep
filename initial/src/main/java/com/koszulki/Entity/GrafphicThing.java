@@ -18,9 +18,9 @@ public abstract class GrafphicThing
     private Integer id;
 
     String name;
-    @Lob
+//    @Lob
     @Type(type="org.hibernate.type.BinaryType")
-    Byte[] picture;
+    byte[] picture;
 
     public Integer getId() {
         return id;
@@ -38,11 +38,11 @@ public abstract class GrafphicThing
         this.name = name;
     }
 
-    public Byte[] getPicture() {
+    public byte[] getPicture() {
         return picture;
     }
 
-    public void setPicture(Byte[] picture) {
+    public void setPicture(byte[] picture) {
         this.picture = picture;
     }
 }

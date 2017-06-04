@@ -5,13 +5,10 @@
     <title>Add new Koszulka</title>
 </head>
 <body>
-    <form th:action="@{/admin/addkoszulka}" th:object="${koszulka}" method="post" role="form" autocomplete="off" action="#">
-        <input type="text" th:field="*{name}" placeholder="Name"
-               class="form-control" />
-        <input type=image th:field="*{picture}" placeholder="Picture"
-               class="form-control" />
-        <input type=number th:field="*{size}" placeholder="Size"
-               class="form-control" />
+    <form th:action="@{/admin/addkoszulka}" method="post" role="form" autocomplete="off" action="#" enctype="multipart/form-data">
+        <input type="text" th:name="name" placeholder="Name"/>
+        <input type="file" th:name="picture" placeholder="Picture"/>
+        <input type="number" th:name="size" placeholder="Size"/>
         <button type="submit" >Add t-shirt</button>
     </form>
 </body>
