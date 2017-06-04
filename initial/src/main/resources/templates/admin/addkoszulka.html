@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new Koszulka</title>
+</head>
+<body>
+    <form th:action=@"/addkoszulka" th:object="${koszulka}" method="post">
+        <input type="text" th:field="*{name}" placeholder="Name"
+               class="form-control" />
+        <input type=image th:field="*{picture}" placeholder="Picture"
+               class="form-control" />
+        <input type=number th:field="*{size}" placeholder="Size"
+               class="form-control" />
+    </form>
+</body>
+</html>

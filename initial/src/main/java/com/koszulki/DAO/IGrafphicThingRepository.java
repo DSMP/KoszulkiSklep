@@ -12,6 +12,5 @@ import org.springframework.data.repository.NoRepositoryBean;
  */
 @NoRepositoryBean
 public interface IGrafphicThingRepository<T extends GrafphicThing> extends CrudRepository<T,Integer> {
-
-    public Page<T> getAll(Pageable pageable); //findByPublishedIsTrueOrderByPublishedTimeDesc
+    public Page<T> findAll(Pageable pageable); //findByPublishedIsTrueOrderByPublishedTimeDesc
 }

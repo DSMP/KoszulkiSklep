@@ -16,6 +16,11 @@ public class KoszulkiService {
     private IKoszulkaRepository koszulkiRepo;
     public Page<Koszulka> getAllKoszulki(Pageable pagable)
     {
-        return koszulkiRepo.getAll(pagable);
+        return koszulkiRepo.findAll(pagable);
+    }
+
+    public void addKoszulka(Koszulka k)
+    {
+        koszulkiRepo.save(k);
     }
 }
