@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
+
 /**
  * Created by Damian on 03.06.2017.
  */
@@ -28,20 +30,20 @@ public class KoszulkiController {
         return "koszulki";
     }
 
-    @RequestMapping(value = "/addkoszulka", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/addkoszulka", method = RequestMethod.GET)
     public ModelAndView addKoszulka()
     {
         ModelAndView mav = new ModelAndView();
-        mav.addObject("koszulka",new Koszulka());
-        mav.setViewName("addkoszulka");
+        mav.addObject("koszulka", new Koszulka());
+        mav.setViewName("admin/addkoszulka");
         return mav;
     }
 
-    @RequestMapping(value = "/addkoszulka", method = RequestMethod.POST)
-    public String addKoszulka(@RequestParam(value="newkoszulka") Koszulka koszulka)
+    @RequestMapping(value = "/admin/addkoszulka", method = RequestMethod.POST)
+    public String addKoszulka(@Valid Koszulka koszulka)
     {
         koszulkiService.addKoszulka(koszulka);
-        return "";
+        return "admin/hello";
     }
 
 }

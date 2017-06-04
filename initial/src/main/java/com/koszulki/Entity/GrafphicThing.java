@@ -1,6 +1,8 @@
 package com.koszulki.Entity;
 
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 
 /**
@@ -16,7 +18,32 @@ public abstract class GrafphicThing
     private Integer id;
 
     String name;
+    @Lob
+    @Type(type="org.hibernate.type.BinaryType")
     Byte[] picture;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Byte[] getPicture() {
+        return picture;
+    }
+
+    public void setPicture(Byte[] picture) {
+        this.picture = picture;
+    }
 }
 
