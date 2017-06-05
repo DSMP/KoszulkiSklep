@@ -23,4 +23,8 @@ public class KoszulkiService {
     {
         koszulkiRepo.save(k);
     }
+
+    public void removeKoszulka(Integer id) {
+        koszulkiRepo.delete(id);
+    }
 }

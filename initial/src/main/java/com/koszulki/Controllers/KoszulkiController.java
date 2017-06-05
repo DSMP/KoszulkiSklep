@@ -49,14 +49,19 @@ public class KoszulkiController {
         Koszulka koszulka= new Koszulka();
         koszulka.setName(name); koszulka.setPicture(picture.getBytes()); koszulka.setSize(size);
         koszulkiService.addKoszulka(koszulka);
-        return "admin/hello";
+        return "admin/addkoszulka";
     }
-    @RequestMapping(value = "image/{imageName}")
-    @ResponseBody
-    public byte[] getImage(@PathVariable(value = "imageName") String imageName) throws IOException {
-
-        File serverFile = new File("/home/user/uploads/" + imageName + ".jpg");
-
-        return Files.readAllBytes(serverFile.toPath());
+//    @RequestMapping(value = "image/{imageName}")
+//    @ResponseBody
+//    public byte[] getImage(@PathVariable(value = "imageName") String imageName) throws IOException {
+//        File serverFile = new File("/home/user/uploads/" + imageName + ".jpg");
+//        return Files.readAllBytes(serverFile.toPath());
+//    }
+    @RequestMapping(value = "/admin/removekoszulka", method = RequestMethod.POST)
+    public String removeKoszulka(@RequestParam Integer id)
+    {
+        koszulkiService.removeKoszulka(id);
+        return "admin/manage-koszulka";
     }
+
 }
