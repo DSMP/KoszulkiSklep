@@ -88,7 +88,7 @@ public class UserController {
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public ModelAndView admin() {
         ModelAndView model = new ModelAndView();
-        model.setViewName("admin/hello");
+        model.setViewName("admin/admin-panel");
         return model;
     }
 
