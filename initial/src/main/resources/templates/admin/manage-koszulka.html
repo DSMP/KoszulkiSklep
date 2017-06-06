@@ -29,43 +29,53 @@
         <h3 class="text-muted">Damian Smug Project</h3>
         <nav>
             <ul class="nav nav-justified">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Downloads</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="../index.html">Home</a></li>
+                <li class="active"><a href="admin/manage-koszulka.html">Manage T-shirts</a></li>
+                <li><a href="admin/manage-bilboard.html">Manage Bilboards</a></li>
+                <li><a href="admin/manage-naklejka.html">Manage Labels</a></li>
+                <li><a href="admin/manage-other.html">Manage Others</a></li>
+                <li><a href="admin/users.html">Manage Users</a></li>
             </ul>
         </nav>
     </div>
 
     <!-- Jumbotron -->
     <div class="jumbotron">
-        <h1>Marketing stuff!</h1>
-        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
-        <p><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p>
+        <h1>Manage T-shirts!</h1>
+        <p class="lead">Manage t-shirts of your store</p>
+        <!--<p><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p>-->
     </div>
 
     <!-- Example row of columns -->
     <div class="row">
         <div class="col-lg-4">
+            <h2>Add T-shirt</h2>
             <form th:action="@{/admin/addkoszulka}" method="post" role="form" autocomplete="off" action="#" enctype="multipart/form-data">
                 <input type="text" th:name="name" placeholder="Name"/>
                 <input type="file" th:name="picture" placeholder="Picture"/>
-                <input type="number" th:name="size" placeholder="Size"/>
-                <button type="submit" >Add t-shirt</button>
+                <input type="number" th:name="size" placeholder="Size"/><br />
+                <button class="btn btn-lg btn-success" type="submit" >Add t-shirt</button>
             </form>
         </div>
         <div class="col-lg-4">
+            <h2>Remove T-shirt</h2>
             <form th:action="@{/admin/removekoszulka}" method="post" role="form" autocomplete="off" action="#" enctype="multipart/form-data">
-                <input type="number" th:name="id" placeholder="Id Koszulki"/>
-                <button type="submit">Remove t-shirt</button>
+                <input type="number" th:name="id" placeholder="Id Koszulki"/><br />
+                <button class="btn btn-lg btn-success" type="submit">Remove t-shirt</button>
             </form>
         </div>
         <div class="col-lg-4">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
-            <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+            <h2>T-shirts</h2>
+            <table>
+                <th:block th:each="koszulka : ${koszulki}">
+                    <tr>
+                        <td th:text="${koszulka.id}">...</td>
+                        <td th:text="${koszulka.name}">...</td>
+                        <td th:text="${koszulka.size}">...</td>
+                        <!--<td th:text="${koszulka.picture}">...</td>-->
+                    </tr>
+                </th:block>
+            </table>
         </div>
     </div>
 

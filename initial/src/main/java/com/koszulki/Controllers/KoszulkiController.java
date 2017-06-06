@@ -35,21 +35,21 @@ public class KoszulkiController {
         return "koszulki";
     }
 
-    @RequestMapping(value = "/admin/addkoszulka", method = RequestMethod.GET)
-    public ModelAndView addKoszulka()
+    @RequestMapping(value = "/admin/manage-koszulka", method = RequestMethod.GET)
+    public ModelAndView getManageKoszulki()
     {
         ModelAndView mav = new ModelAndView();
-//        mav.addObject("koszulka", new Koszulka());
-        mav.setViewName("admin/addkoszulka");
+        mav.addObject("koszulki", koszulkiService.getAllKoszulki());
+        mav.setViewName("admin/manage-koszulka");
         return mav;
     }
 
     @RequestMapping(value = "/admin/addkoszulka", method = RequestMethod.POST)
-    public String addKoszulka(@RequestParam String name, @RequestParam MultipartFile picture, @RequestParam Integer size) throws IOException {
+    public String getManageKoszulki(@RequestParam String name, @RequestParam MultipartFile picture, @RequestParam Integer size) throws IOException {
         Koszulka koszulka= new Koszulka();
         koszulka.setName(name); koszulka.setPicture(picture.getBytes()); koszulka.setSize(size);
         koszulkiService.addKoszulka(koszulka);
-        return "admin/addkoszulka";
+        return "admin/manage-koszulka";
     }
 //    @RequestMapping(value = "image/{imageName}")
 //    @ResponseBody

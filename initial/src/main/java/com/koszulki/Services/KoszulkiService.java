@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Damian on 03.06.2017.
  */
@@ -17,6 +19,9 @@ public class KoszulkiService {
     public Page<Koszulka> getAllKoszulki(Pageable pagable)
     {
         return koszulkiRepo.findAll(pagable);
+    }
+    public List<Koszulka> getAllKoszulki(){
+        return (List<Koszulka>) koszulkiRepo.findAll();
     }
 
     public void addKoszulka(Koszulka k)
