@@ -14,6 +14,15 @@ public class PageWrapper<T> {
     private List<PageItem> items;
     private int currentNumber;
     private String url;
+    private boolean first;
+
+    public boolean isFirst() {
+        return this.isFirstPage();
+    }
+
+    public void setFirst(boolean first) {
+        this.first = first;
+    }
 
     public String getUrl() {
         return url;

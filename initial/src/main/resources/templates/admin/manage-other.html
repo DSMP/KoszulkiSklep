@@ -29,7 +29,7 @@
         <h3 class="text-muted">Damian Smug Project</h3>
         <nav>
             <ul class="nav nav-justified">
-                <li class="active"><a href="../index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="admin/manage-koszulka.html">Manage T-shirts</a></li>
                 <li><a href="admin/manage-bilboard.html">Manage Bilboards</a></li>
                 <li><a href="admin/magae-naklejka.html">Manage Labels</a></li>
@@ -49,20 +49,31 @@
     <!-- Example row of columns -->
     <div class="row">
         <div class="col-lg-4">
-            <h2>Safari bug warning!</h2>
-            <p class="text-danger">As of v9.1.2, Safari exhibits a bug in which resizing your browser horizontally causes rendering errors in the justified nav that are cleared upon refreshing.</p>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+            <h2>Add new thing</h2>
+            <form th:action="@{/admin/addother}" method="post" role="form" autocomplete="off" action="#" enctype="multipart/form-data">
+                <input type="text" th:name="name" placeholder="Name"/>
+                <input type="file" th:name="picture" placeholder="Picture"/>
+                <button class="btn btn-lg btn-success" type="submit" >Add This</button>
+            </form>
+        </div>
+        <div class="col-lg-4">
+            <h2>Remove</h2>
+            <form th:action="@{/admin/removeother}" method="post" role="form" autocomplete="off" action="#" enctype="multipart/form-data">
+                <input type="number" th:name="id" placeholder="Id Koszulki"/><br />
+                <button class="btn btn-lg btn-success" type="submit">Remove it</button>
+            </form>
         </div>
         <div class="col-lg-4">
             <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-lg-4">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
-            <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+            <table>
+                <th:block th:each="other : ${others}">
+                    <tr>
+                        <td th:text="${other.id}">...</td>
+                        <td th:text="${other.name}">...</td>
+                        <!--<td th:text="${koszulka.picture}">...</td>-->
+                    </tr>
+                </th:block>
+            </table>
         </div>
     </div>
 

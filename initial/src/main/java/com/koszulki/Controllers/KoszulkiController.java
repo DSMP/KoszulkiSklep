@@ -35,7 +35,7 @@ public class KoszulkiController {
         return "koszulki";
     }
 
-    @RequestMapping(value = "/admin/manage-koszulka", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/manage-koszulka", method = RequestMethod.GET) // non paging
     public ModelAndView getManageKoszulki()
     {
         ModelAndView mav = new ModelAndView();
@@ -43,6 +43,14 @@ public class KoszulkiController {
         mav.setViewName("admin/manage-koszulka");
         return mav;
     }
+//    @RequestMapping(value = "/admin/manage-koszulka", method = RequestMethod.GET) paging
+//    public String getManageKoszulki(Model uiModel, Pageable pageable)
+//    {
+//        PageWrapper<Koszulka> page = new PageWrapper<Koszulka>
+//                (koszulkiService.getAllKoszulki(pageable), "/admin/manage-koszulka");
+//        uiModel.addAttribute("page", page);
+//        return "admin/manage-koszulka";
+//    }
 
     @RequestMapping(value = "/admin/addkoszulka", method = RequestMethod.POST)
     public String getManageKoszulki(@RequestParam String name, @RequestParam MultipartFile picture, @RequestParam Integer size) throws IOException {
