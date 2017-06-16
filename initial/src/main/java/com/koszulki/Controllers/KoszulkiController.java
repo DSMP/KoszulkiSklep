@@ -4,6 +4,7 @@ import com.koszulki.Entity.Koszulka;
 import com.koszulki.Services.KoszulkiService;
 import com.koszulki.Utils.PageWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,31 +27,37 @@ import java.nio.file.Files;
 public class KoszulkiController {
     @Autowired
     private KoszulkiService koszulkiService;
-
-    @RequestMapping(value = "/koszulki", method = RequestMethod.GET)
-    public String koszulki(Model uiModel, Pageable pageable) {
-        PageWrapper<Koszulka> page = new PageWrapper<Koszulka>
-        (koszulkiService.getAllKoszulki(pageable), "/koszulki");
-        uiModel.addAttribute("page", page);
-        return "koszulki";
-    }
-
-    @RequestMapping(value = "/admin/manage-koszulka", method = RequestMethod.GET) // non paging
-    public ModelAndView getManageKoszulki()
-    {
-        ModelAndView mav = new ModelAndView();
-        mav.addObject("koszulki", koszulkiService.getAllKoszulki());
-        mav.setViewName("admin/manage-koszulka");
-        return mav;
-    }
-//    @RequestMapping(value = "/admin/manage-koszulka", method = RequestMethod.GET) paging
-//    public String getManageKoszulki(Model uiModel, Pageable pageable)
-//    {
+//    dla userow pageable
+//    @RequestMapping(value = "/koszulki", method = RequestMethod.GET)
+//    public String koszulki(Model uiModel, Pageable pageable) {
 //        PageWrapper<Koszulka> page = new PageWrapper<Koszulka>
-//                (koszulkiService.getAllKoszulki(pageable), "/admin/manage-koszulka");
+//        (koszulkiService.getAllKoszulki(pageable), "/koszulki");
 //        uiModel.addAttribute("page", page);
-//        return "admin/manage-koszulka";
+//        return "koszulki";
 //    }
+
+//    @RequestMapping(value = "/admin/manage-koszulka", method = RequestMethod.GET) // non paging
+//    public ModelAndView getManageKoszulki()
+//    {
+//        ModelAndView mav = new ModelAndView();
+//        mav.addObject("koszulki", koszulkiService.getAllKoszulki());
+//        mav.setViewName("admin/manage-koszulka");
+//        return mav;
+//    }
+    @RequestMapping(value = "/admin/manage-koszulka", method = RequestMethod.GET) //paging
+    public String getManageKoszulki(Model uiModel)
+    {
+        Page<Koszulka> page = koszulkiService.getAllKoszulki(0);
+        uiModel.addAttribute("page", page);
+        return "admin/manage-koszulka";
+    }
+    @RequestMapping(value = "/admin/manage-koszulka1", method = RequestMethod.GET) //paging
+    public String getManageKoszulki(Model uiModel, @RequestParam Integer pagei)
+    {
+        Page<Koszulka> page = koszulkiService.getAllKoszulki(pagei);
+        uiModel.addAttribute("page", page);
+        return "admin/manage-koszulka";
+    }
 
     @RequestMapping(value = "/admin/addkoszulka", method = RequestMethod.POST)
     public String getManageKoszulki(@RequestParam String name, @RequestParam MultipartFile picture, @RequestParam Integer size) throws IOException {

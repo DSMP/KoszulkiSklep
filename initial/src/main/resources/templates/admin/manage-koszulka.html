@@ -66,8 +66,8 @@
         </div>
         <div class="col-lg-4">
             <h2>T-shirts</h2>
-            <table>
-                <th:block th:each="koszulka : ${koszulki}">
+            <table class="table table-hover">
+                <th:block th:each="koszulka : ${page.getContent()}">
                     <tr>
                         <td th:text="${koszulka.id}">...</td>
                         <td th:text="${koszulka.name}">...</td>
@@ -76,23 +76,19 @@
                     </tr>
                 </th:block>
             </table>
-
+            <div class="table-pagination">
+                <ul class="pagination">
+                    <li th:class="${page.getNumber() eq 0} ? 'disabled' : ''">
+                        <a th:if="${page.hasPrevious()}" th:href="@{${'/admin/manage-koszulka1'}(pagei=${page.getNumber()-1})}">Previous</a>
+                        <a th:if="${not page.hasPrevious()}" th:href="@{${'/admin/manage-koszulka1'}(pagei=${page.getNumber()})}">Previous</a>
+                    </li>
+                    <li th:class="${page.getNumber() eq page.getTotalPages()-1} ? 'disabled' : ''">
+                        <a th:if="${page.hasNext()}" th:href="@{${'/admin/manage-koszulka1'}(pagei=${page.getNumber()+1})}">Next</a>
+                        <a th:if="${not page.hasNext()}" th:href="@{${'/admin/manage-koszulka1'}(pagei=${page.getNumber()})}">Next</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <!--<div th:fragment='paginationbar'>-->
-            <!--<div class='pagination pagination-centered'>-->
-                <!--<ul>-->
-                    <!--<li th:class='(${page.first})? ('disabled') : ('')'>-->
-                    <!--<span th:if='${page.first}'>← First</span>-->
-                    <!--<a th:if='${not page.first}' th:href='@{${page.url}(page.page=1,page.size=${page.size})}'>← First</a>-->
-                    <!--</li>-->
-                    <!--<li><a href='#'>1</a></li>-->
-                    <!--<li><a href='#'>2</a></li>-->
-                    <!--<li><a href='#'>3</a></li>-->
-                    <!--<li><a href='#'>4</a></li>-->
-                    <!--<li><a href='#'>next</a></li>-->
-                <!--</ul>-->
-            <!--</div>-->
-        <!--</div>-->
     </div>
 
     <!-- Site footer -->

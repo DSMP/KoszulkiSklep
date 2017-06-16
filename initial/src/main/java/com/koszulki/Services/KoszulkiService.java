@@ -4,6 +4,7 @@ import com.koszulki.DAO.IKoszulkaRepository;
 import com.koszulki.Entity.Koszulka;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -16,9 +17,10 @@ import java.util.List;
 public class KoszulkiService {
     @Autowired
     private IKoszulkaRepository koszulkiRepo;
-    public Page<Koszulka> getAllKoszulki(Pageable pagable)
+    public Page<Koszulka> getAllKoszulki(int page)
     {
-        return koszulkiRepo.findAll(pagable);
+        Pageable pageRequest = new PageRequest(page,5);
+        return koszulkiRepo.findAll(pageRequest);
     }
     public List<Koszulka> getAllKoszulki(){
         return (List<Koszulka>) koszulkiRepo.findAll();
@@ -32,4 +34,6 @@ public class KoszulkiService {
     public void removeKoszulka(Integer id) {
         koszulkiRepo.delete(id);
     }
+
+
 }
