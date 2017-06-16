@@ -39,7 +39,7 @@ public class KoszulkiController {
     }
 
 //    @RequestMapping(value = "/admin/manage-koszulka", method = RequestMethod.GET) // non paging
-//    public ModelAndView getManageKoszulki()
+//    public ModelAndView addKoszulki()
 //    {
 //        ModelAndView mav = new ModelAndView();
 //        mav.addObject("koszulki.html", koszulkiService.getAllKoszulki());
@@ -62,11 +62,11 @@ public class KoszulkiController {
     }
 
     @RequestMapping(value = "/admin/addkoszulka", method = RequestMethod.POST)
-    public String getManageKoszulki(@RequestParam String name, @RequestParam MultipartFile picture, @RequestParam Integer size) throws IOException {
+    public ModelAndView addKoszulki(Model uiModel, @RequestParam String name, @RequestParam MultipartFile picture, @RequestParam Integer size) throws IOException {
         Koszulka koszulka= new Koszulka();
         koszulka.setName(name); koszulka.setPicture(picture.getBytes()); koszulka.setSize(size);
         koszulkiService.addKoszulka(koszulka);
-        return "admin/manage-koszulka";
+        return new ModelAndView("redirect:/admin/manage-koszulka");
     }
 //    @RequestMapping(value = "image/{imageName}")
 //    @ResponseBody
@@ -75,10 +75,10 @@ public class KoszulkiController {
 //        return Files.readAllBytes(serverFile.toPath());
 //    }
     @RequestMapping(value = "/admin/removekoszulka", method = RequestMethod.POST)
-    public String removeKoszulka(@RequestParam Integer id)
+    public ModelAndView removeKoszulka(Model uiModel, @RequestParam Integer id)
     {
         koszulkiService.removeKoszulka(id);
-        return "admin/manage-koszulka";
+        return new ModelAndView("redirect:/admin/manage-koszulka");
     }
 
 }
