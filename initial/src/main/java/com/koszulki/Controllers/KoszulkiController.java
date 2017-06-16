@@ -19,6 +19,8 @@ import java.io.Console;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.Base64;
+import java.util.List;
 
 /**
  * Created by Damian on 03.06.2017.
@@ -28,19 +30,19 @@ public class KoszulkiController {
     @Autowired
     private KoszulkiService koszulkiService;
 //    dla userow pageable
-//    @RequestMapping(value = "/koszulki", method = RequestMethod.GET)
-//    public String koszulki(Model uiModel, Pageable pageable) {
-//        PageWrapper<Koszulka> page = new PageWrapper<Koszulka>
-//        (koszulkiService.getAllKoszulki(pageable), "/koszulki");
-//        uiModel.addAttribute("page", page);
-//        return "koszulki";
-//    }
+    @RequestMapping(value = "/koszulki", method = RequestMethod.GET)
+    public String koszulki(Model uiModel) {
+        Page<Koszulka> page = koszulkiService.getAllKoszulki(0);
+        uiModel.addAttribute("obrazek", Base64.getEncoder().encodeToString(((Koszulka)page.getContent().toArray()[4]).getPicture()));
+        uiModel.addAttribute("page", page);
+        return "koszulki";
+    }
 
 //    @RequestMapping(value = "/admin/manage-koszulka", method = RequestMethod.GET) // non paging
 //    public ModelAndView getManageKoszulki()
 //    {
 //        ModelAndView mav = new ModelAndView();
-//        mav.addObject("koszulki", koszulkiService.getAllKoszulki());
+//        mav.addObject("koszulki.html", koszulkiService.getAllKoszulki());
 //        mav.setViewName("admin/manage-koszulka");
 //        return mav;
 //    }

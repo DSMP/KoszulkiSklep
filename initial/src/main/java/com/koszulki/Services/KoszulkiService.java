@@ -19,7 +19,7 @@ public class KoszulkiService {
     private IKoszulkaRepository koszulkiRepo;
     public Page<Koszulka> getAllKoszulki(int page)
     {
-        Pageable pageRequest = new PageRequest(page,5);
+        Pageable pageRequest = new PageRequest(page,6);
         return koszulkiRepo.findAll(pageRequest);
     }
     public List<Koszulka> getAllKoszulki(){

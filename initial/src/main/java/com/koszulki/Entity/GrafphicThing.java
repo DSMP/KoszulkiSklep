@@ -4,6 +4,7 @@ package com.koszulki.Entity;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.Base64;
 
 /**
  * Created by Damian on 09.05.2017.
