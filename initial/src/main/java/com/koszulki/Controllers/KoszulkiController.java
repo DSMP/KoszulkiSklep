@@ -33,7 +33,12 @@ public class KoszulkiController {
     @RequestMapping(value = "/koszulki", method = RequestMethod.GET)
     public String koszulki(Model uiModel) {
         Page<Koszulka> page = koszulkiService.getAllKoszulki(0);
-        uiModel.addAttribute("obrazek", Base64.getEncoder().encodeToString(((Koszulka)page.getContent().toArray()[4]).getPicture()));
+        uiModel.addAttribute("page", page);
+        return "koszulki";
+    }
+    @RequestMapping(value = "/koszulki1", method = RequestMethod.GET)
+    public String koszulki(Model uiModel, int pagei) {
+        Page<Koszulka> page = koszulkiService.getAllKoszulki(pagei);
         uiModel.addAttribute("page", page);
         return "koszulki";
     }
