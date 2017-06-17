@@ -22,26 +22,5 @@ public class OtherController {
     @Autowired
     OtherService otherService;
 
-    @RequestMapping(value = "/admin/manage-other", method = RequestMethod.GET) // non paging
-    public ModelAndView getManageOthers()
-    {
-        ModelAndView mav = new ModelAndView();
-        mav.addObject("others", otherService.getAllOthers());
-        mav.setViewName("admin/manage-other");
-        return mav;
-    }
 
-    @RequestMapping(value = "/admin/addother", method = RequestMethod.POST)
-    public String getManageKoszulki(@RequestParam String name, @RequestParam MultipartFile picture) throws IOException {
-        Other other= new Other();
-        other.setName(name); other.setPicture(picture.getBytes());
-        otherService.addOther(other);
-        return "admin/manage-other";
-    }
-    @RequestMapping(value = "/admin/removeother", method = RequestMethod.POST)
-    public String removeKoszulka(@RequestParam Integer id)
-    {
-        otherService.removeOther(id);
-        return "admin/manage-other";
-    }
 }
