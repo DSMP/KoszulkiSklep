@@ -32,7 +32,7 @@ import java.util.List;
 public class KoszulkiController {
     @Autowired
     private KoszulkiService koszulkiService;
-//    dla userow pageable
+
     @RequestMapping(value = "/koszulki", method = RequestMethod.GET)
     public String koszulki(Model uiModel) {
         Page<Koszulka> page = koszulkiService.getAllKoszulki(0);
@@ -45,42 +45,6 @@ public class KoszulkiController {
         uiModel.addAttribute("page", page);
         return "koszulki";
     }
-
-    @RequestMapping(value = "/admin/manage-koszulka", method = RequestMethod.GET) //paging
-    public String getManageKoszulki(Model uiModel)
-    {
-        Page<Koszulka> page = koszulkiService.getAllKoszulki(0);
-        uiModel.addAttribute("page", page);
-        return "admin/manage-koszulka";
-    }
-    @RequestMapping(value = "/admin/manage-koszulka1", method = RequestMethod.GET) //paging
-    public String getManageKoszulki(Model uiModel, @RequestParam Integer pagei)
-    {
-        Page<Koszulka> page = koszulkiService.getAllKoszulki(pagei);
-        uiModel.addAttribute("page", page);
-        return "admin/manage-koszulka";
-    }
-
-    @RequestMapping(value = "/admin/addkoszulka", method = RequestMethod.POST)
-    public ModelAndView addKoszulki(Model uiModel, @RequestParam String name, @RequestParam MultipartFile picture, @RequestParam Integer size) throws IOException {
-        Koszulka koszulka= new Koszulka();
-        koszulka.setName(name); koszulka.setPicture(picture.getBytes()); koszulka.setSize(size);
-        koszulkiService.addKoszulka(koszulka);
-        return new ModelAndView("redirect:/admin/manage-koszulka");
-    }
-//    @RequestMapping(value = "image/{imageName}")
-//    @ResponseBody
-//    public byte[] getImage(@PathVariable(value = "imageName") String imageName) throws IOException {
-//        File serverFile = new File("/home/user/uploads/" + imageName + ".jpg");
-//        return Files.readAllBytes(serverFile.toPath());
-//    }
-    @RequestMapping(value = "/admin/removekoszulka", method = RequestMethod.POST)
-    public ModelAndView removeKoszulka(Model uiModel, @RequestParam Integer id)
-    {
-        koszulkiService.removeKoszulka(id);
-        return new ModelAndView("redirect:/admin/manage-koszulka");
-    }
-
     @RequestMapping(value = "/koszulki2", method = RequestMethod.GET)
     public ModelAndView addToCart(HttpSession httpSession, int pagei, int id)
     {
