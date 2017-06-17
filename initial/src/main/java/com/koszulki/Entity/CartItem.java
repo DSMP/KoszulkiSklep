@@ -4,7 +4,7 @@ package com.koszulki.Entity;
  * Created by Damian on 17.06.2017.
  */
 public class CartItem extends GrafphicThing{
-    private long quantity;
+    private long quantity = 1;
 
     public long getQuantity() {
         return quantity;

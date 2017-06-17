@@ -23,24 +23,26 @@ public class CartService {
     }
     public List<CartItem> add(List<CartItem> orderList, CartItem newThing)
     {
-//        if (orderList.isEmpty())
-//        {
-//            orderList.add(newThing);
-//        }
-//        else
-//        {
-//            for (CartItem item : orderList) {
-//                if (item.getId() == (newThing.getId()))
-//                {
-//                    item.increaseQuantity();
-//                }
-//                else
-//                {
-//                    orderList.add(newThing);
-//                }
-//            }
-//        }
-        orderList.add(newThing);
+        if (orderList.isEmpty())
+        {
+            orderList.add(newThing);
+        }
+        else
+        {
+            boolean existOnList = false;
+            for (int i=0; i < orderList.size(); i++) {
+                if (orderList.get(i).getId() == (newThing.getId()))
+                {
+                    orderList.get(i).increaseQuantity();
+                    existOnList = true;
+                }
+            }
+            if (!existOnList)
+            {
+                orderList.add(newThing);
+            }
+        }
+//        orderList.add(newThing);
         return orderList;
     }
 }
