@@ -68,10 +68,19 @@
             <div class="col-sm-2">
                 <div class="panel panel-primary">
                     <div class="panel-heading"><p th:text="${item.name}"><p/></div>
-                    <div class="panel-body"><img th:src="@{'data:image/jpg;base64,'+${item.getEncodedPicture()}}" class="img-responsive" style="width:30%" alt="Image"></div>
+                    <div class="panel-body"><img th:src="@{'data:image/jpg;base64,'+${item.getEncodedPicture()}}" class="img-responsive" style="width:80%;margin:auto;" alt="Image"></div>
                     <div class="panel-footer">
                         <!--<p th:text="'Size: '+${item.size}"><p/>-->
-                        <p th:text="'Quantity: '+${item.quantity}"><p/>
+                        <form th:action="@{/cart/changeQuantity}" method="post" role="form" autocomplete="off">
+                            <input type="hidden" th:name="id" th:value="${item.id}"> </input>
+                            <table>
+                                <tr>
+                                    <td><p th:text="'Quantity: '"></p></td>
+                                    <td><input class="input-sm" style="width:100%" th:name="quantity" th:value="${item.quantity}"> </input></td>
+                                </tr>
+                            </table>
+                            <button class="btn btn-sm btn-success" type="submit">Change Quantity</button>
+                        </form>
                         <a class="label label-danger" th:href="@{${'cart/remove'}(id=${item.id})}">
                             <span class="glyphicon glyphicon-remove"/></span> Remove
                         </a>

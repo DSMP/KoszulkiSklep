@@ -5,7 +5,7 @@ package com.koszulki.Entity;
  */
 public class CartItem extends GrafphicThing{
     private long quantity = 1;
-
+//    private GrafphicThing grafphicThing -- trzeba by sie zastanowic i dodatkowo metoda getGraf dzieki ktorej nie stracilbym danych na temat konkretnego elementu
     public CartItem() {
     }
 

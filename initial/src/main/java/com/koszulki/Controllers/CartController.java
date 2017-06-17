@@ -24,7 +24,7 @@ public class CartController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String showYourCart(Model model, HttpSession httpSession)
     {
-        List<MyOrder> cartItems = (List<MyOrder>) httpSession.getAttribute("cartItems");
+        List<CartItem> cartItems = (List<CartItem>) httpSession.getAttribute("cartItems");
         model.addAttribute("cartItems", cartItems);
         return "your-cart";
     }
@@ -34,6 +34,14 @@ public class CartController {
 
         List<CartItem> cartItems = (List<CartItem>) httpSession.getAttribute("cartItems");
         cartService.searchAndDeleteItem(cartItems,id);
+        return new ModelAndView("redirect:/cart");
+    }
+    @RequestMapping(value = "/changeQuantity", method = RequestMethod.POST)
+    public ModelAndView changeQuantity(HttpSession httpSession, int id, int quantity)
+    {
+        List<CartItem> cartItems = (List<CartItem>) httpSession.getAttribute("cartItems");
+        cartService.changeItemQuantityByItemId(cartItems, id, quantity);
+        httpSession.setAttribute("cartItems", cartItems);
         return new ModelAndView("redirect:/cart");
     }
 }

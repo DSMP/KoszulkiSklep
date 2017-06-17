@@ -44,4 +44,13 @@ public class CartService {
         }
         return orderList;
     }
+    public void changeItemQuantityByItemId(List<CartItem> orderList, int id, int quantity)
+    {
+        for (int i = 0; i < orderList.size(); i++) {
+            if (orderList.get(i).getId() == id)
+            {
+                orderList.get(i).setQuantity(quantity);
+            }
+        }
+    }
 }
