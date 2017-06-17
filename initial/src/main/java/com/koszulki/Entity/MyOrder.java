@@ -15,9 +15,12 @@ public class MyOrder {
     int id;
     @ManyToOne
     GrafphicThing grafphicThing;
+    @ManyToOne
     MyUser CustomerOrdered;
     Date dateCreated;
     long quantity;
+    boolean isDone = false;
+    String Adres;
 
     public MyOrder() {
     }
@@ -65,4 +68,19 @@ public class MyOrder {
         this.quantity = quantity;
     }
 
+    public boolean isDone() {
+        return isDone;
+    }
+
+    public void setDone(boolean done) {
+        isDone = done;
+    }
+
+    public String getAdres() {
+        return Adres;
+    }
+
+    public void setAdres(String adres) {
+        Adres = adres;
+    }
 }

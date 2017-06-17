@@ -21,6 +21,7 @@ public class MyUser implements Serializable{
     @NotEmpty(message = "*Please provide your password")
     private String password;
     private Integer Active;
+    private long Number;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -80,6 +81,14 @@ public class MyUser implements Serializable{
 
     public void setActive(Integer active) {
         Active = active;
+    }
+
+    public long getNumber() {
+        return Number;
+    }
+
+    public void setNumber(long number) {
+        Number = number;
     }
 
     @Override
