@@ -1,11 +1,9 @@
 package com.koszulki.Entity;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Damian on 17.06.2017.
@@ -16,9 +14,17 @@ public class MyOrder {
     @Id
     int id;
     @ManyToOne
-    GrafphicThing grafphicThings;
+    GrafphicThing grafphicThing;
     MyUser CustomerOrdered;
     Date dateCreated;
+    long quantity;
+
+    public MyOrder() {
+    }
+
+    public MyOrder(GrafphicThing grafphicThing) {
+    }
+
     public int getId() {
         return id;
     }
@@ -27,12 +33,12 @@ public class MyOrder {
         this.id = id;
     }
 
-    public GrafphicThing getGrafphicThings() {
-        return grafphicThings;
+    public GrafphicThing getGrafphicThing() {
+        return grafphicThing;
     }
 
-    public void setGrafphicThings(GrafphicThing grafphicThings) {
-        this.grafphicThings = grafphicThings;
+    public void setGrafphicThing(GrafphicThing grafphicThing) {
+        this.grafphicThing = grafphicThing;
     }
 
     public Date getDateCreated() {
@@ -50,4 +56,13 @@ public class MyOrder {
     public void setCustomerOrdered(MyUser customerOrdered) {
         CustomerOrdered = customerOrdered;
     }
+
+    public long getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(long quantity) {
+        this.quantity = quantity;
+    }
+
 }

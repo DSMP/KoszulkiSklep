@@ -1,6 +1,8 @@
 package com.koszulki.Services;
 
+import com.koszulki.Entity.CartItem;
 import com.koszulki.Entity.GrafphicThing;
+import com.koszulki.Entity.MyOrder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,13 +12,35 @@ import java.util.List;
  */
 @Service
 public class CartService {
-    public void searchAndDeleteGrafphicThing(List<GrafphicThing> grafphicThings, int id)
+    public void searchAndDeleteItem(List<CartItem> orderList, int id)
     {
-        for (int i = 0; i < grafphicThings.size(); i++) {
-            if (grafphicThings.get(i).getId() == id)
+        for (int i = 0; i < orderList.size(); i++) {
+            if (orderList.get(i).getId() == id)
             {
-                grafphicThings.remove(i);
+                orderList.remove(i);
             }
         }
+    }
+    public List<CartItem> add(List<CartItem> orderList, CartItem newThing)
+    {
+//        if (orderList.isEmpty())
+//        {
+//            orderList.add(newThing);
+//        }
+//        else
+//        {
+//            for (CartItem item : orderList) {
+//                if (item.getId() == (newThing.getId()))
+//                {
+//                    item.increaseQuantity();
+//                }
+//                else
+//                {
+//                    orderList.add(newThing);
+//                }
+//            }
+//        }
+        orderList.add(newThing);
+        return orderList;
     }
 }

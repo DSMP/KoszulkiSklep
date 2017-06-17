@@ -1,6 +1,7 @@
 package com.koszulki.Controllers;
 
-import com.koszulki.Entity.GrafphicThing;
+import com.koszulki.Entity.CartItem;
+import com.koszulki.Entity.MyOrder;
 import com.koszulki.Services.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,15 +24,16 @@ public class CartController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String showYourCart(Model model, HttpSession httpSession)
     {
-        List<GrafphicThing> cartItems = (List<GrafphicThing>) httpSession.getAttribute("cartItems");
+        List<MyOrder> cartItems = (List<MyOrder>) httpSession.getAttribute("cartItems");
         model.addAttribute("cartItems", cartItems);
         return "your-cart";
     }
     @RequestMapping(value = "/remove", method = RequestMethod.GET)
     public ModelAndView removeItemFromCart(Model model, HttpSession httpSession, int id)
     {
-        List<GrafphicThing> cartItems = (List<GrafphicThing>) httpSession.getAttribute("cartItems");
-        cartService.searchAndDeleteGrafphicThing(cartItems,id);
+
+        List<CartItem> cartItems = (List<CartItem>) httpSession.getAttribute("cartItems");
+        cartService.searchAndDeleteItem(cartItems,id);
         return new ModelAndView("redirect:/cart");
     }
 }
