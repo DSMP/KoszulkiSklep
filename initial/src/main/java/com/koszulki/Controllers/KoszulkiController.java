@@ -1,6 +1,7 @@
 package com.koszulki.Controllers;
 
 import com.koszulki.Entity.CartItem;
+import com.koszulki.Entity.GrafphicThing;
 import com.koszulki.Entity.Koszulka;
 import com.koszulki.Entity.MyOrder;
 import com.koszulki.Services.CartService;
@@ -44,11 +45,7 @@ public class KoszulkiController {
         List<CartItem> cartItems = (List<CartItem>) httpSession.getAttribute("cartItems");
         if (cartItems == null)
             cartItems = new ArrayList<>();
-        Koszulka koszulka = koszulkiService.getKoszulkaById(id);
-        CartItem cartItem = new CartItem();
-        cartItem.setId(koszulka.getId());
-        cartItem.setName(koszulka.getName());
-        cartItem.setPicture(koszulka.getPicture());
+        CartItem cartItem = new CartItem(koszulkiService.getKoszulkaById(id));
         cartItems = cartService.add(cartItems,cartItem);
         httpSession.setAttribute("cartItems", cartItems);
         return new ModelAndView("redirect:/koszulki1?pagei="+pagei);

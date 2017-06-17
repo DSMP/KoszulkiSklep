@@ -6,6 +6,16 @@ package com.koszulki.Entity;
 public class CartItem extends GrafphicThing{
     private long quantity = 1;
 
+    public CartItem() {
+    }
+
+    public CartItem(GrafphicThing grafphicThing) {
+        super();
+        this.setId(grafphicThing.getId());
+        this.setName(grafphicThing.getName());
+        this.setPicture(grafphicThing.getPicture());
+    }
+
     public long getQuantity() {
         return quantity;
     }

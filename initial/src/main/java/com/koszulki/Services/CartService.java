@@ -42,7 +42,6 @@ public class CartService {
                 orderList.add(newThing);
             }
         }
-//        orderList.add(newThing);
         return orderList;
     }
 }
