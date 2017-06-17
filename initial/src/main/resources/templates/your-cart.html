@@ -49,14 +49,14 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li><a href="index.html">Home</a></li>
-                <li class="active"><a href="#">T-Shirts</a></li>
-                <li><a href="#">Bilboards</a></li>
-                <li><a href="#">Labels</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="/koszulki">T-Shirts</a></li>
+                <li><a href="/bilboards">Bilboards</a></li>
+                <li><a href="/labels">Labels</a></li>
+                <li><a href="/contact">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
-                <li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+                <li class="active"><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
             </ul>
         </div>
     </div>
@@ -64,37 +64,29 @@
 
 <div class="container">
     <div class="row">
-        <th:block th:each="item : ${page.getContent()}">
-            <div class="col-sm-4">
+        <th:block th:each="item : ${cartItems}">
+            <div class="col-sm-2">
                 <div class="panel panel-primary">
                     <div class="panel-heading"><p th:text="${item.name}"><p/></div>
-                    <div class="panel-body"><img th:src="@{'data:image/jpg;base64,'+${item.getEncodedPicture()}}" class="img-responsive" style="width:100%" alt="Image"></div>
-                    <div class="panel-footer">
-                        <p th:text="'Size: '+${item.size}"><p/>
-                        <p>
-                            <a th:href="@{${'koszulki2'}(pagei = ${page.getNumber()}, id=${item.id})}" class="btn btn-warning btn-large">
-                                <span class="glyphicon-shopping-cart glyphicon">
-                                </span> Order Now
-                            </a>
-                        <p/>
-                    </div>
+                    <div class="panel-body"><img th:src="@{'data:image/jpg;base64,'+${item.getEncodedPicture()}}" class="img-responsive" style="width:30%" alt="Image"></div>
+                    <div class="panel-footer"><p th:text="'Size: '+${item.size}"><p/></div>
                 </div>
             </div>
         </th:block>
     </div>
 </div>
-<div class="table-pagination text-center">
-    <ul class="pagination">
-        <li th:class="${page.getNumber() eq 0} ? 'disabled' : ''">
-            <a th:if="${page.hasPrevious()}" th:href="@{${'koszulki1'}(pagei=${page.getNumber()-1})}">Previous</a>
-            <a th:if="${not page.hasPrevious()}" th:href="@{${'#'}(pagei=${page.getNumber()})}">Previous</a>
-        </li>
-        <li th:class="${page.getNumber() eq page.getTotalPages()-1} ? 'disabled' : ''">
-            <a th:if="${page.hasNext()}" th:href="@{${'koszulki1'}(pagei=${page.getNumber()+1})}">Next</a>
-            <a th:if="${not page.hasNext()}" th:href="@{${'#'}(pagei=${page.getNumber()})}">Next</a>
-        </li>
-    </ul>
-</div>
+<!--<div class="table-pagination text-center">-->
+    <!--<ul class="pagination">-->
+        <!--<li th:class="${page.getNumber() eq 0} ? 'disabled' : ''">-->
+            <!--<a th:if="${page.hasPrevious()}" th:href="@{${'koszulki1'}(pagei=${page.getNumber()-1})}">Previous</a>-->
+            <!--<a th:if="${not page.hasPrevious()}" th:href="@{${'#'}(pagei=${page.getNumber()})}">Previous</a>-->
+        <!--</li>-->
+        <!--<li th:class="${page.getNumber() eq page.getTotalPages()-1} ? 'disabled' : ''">-->
+            <!--<a th:if="${page.hasNext()}" th:href="@{${'koszulki1'}(pagei=${page.getNumber()+1})}">Next</a>-->
+            <!--<a th:if="${not page.hasNext()}" th:href="@{${'#'}(pagei=${page.getNumber()})}">Next</a>-->
+        <!--</li>-->
+    <!--</ul>-->
+<!--</div>-->
 <br><br><br>
 
 <footer class="container-fluid text-center">

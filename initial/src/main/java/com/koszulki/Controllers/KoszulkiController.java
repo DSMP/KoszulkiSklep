@@ -1,5 +1,6 @@
 package com.koszulki.Controllers;
 
+import com.koszulki.Entity.GrafphicThing;
 import com.koszulki.Entity.Koszulka;
 import com.koszulki.Services.KoszulkiService;
 import com.koszulki.Utils.PageWrapper;
@@ -14,11 +15,13 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.Console;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
@@ -43,14 +46,6 @@ public class KoszulkiController {
         return "koszulki";
     }
 
-//    @RequestMapping(value = "/admin/manage-koszulka", method = RequestMethod.GET) // non paging
-//    public ModelAndView addKoszulki()
-//    {
-//        ModelAndView mav = new ModelAndView();
-//        mav.addObject("koszulki.html", koszulkiService.getAllKoszulki());
-//        mav.setViewName("admin/manage-koszulka");
-//        return mav;
-//    }
     @RequestMapping(value = "/admin/manage-koszulka", method = RequestMethod.GET) //paging
     public String getManageKoszulki(Model uiModel)
     {
@@ -86,4 +81,14 @@ public class KoszulkiController {
         return new ModelAndView("redirect:/admin/manage-koszulka");
     }
 
+    @RequestMapping(value = "/koszulki2", method = RequestMethod.GET)
+    public ModelAndView addToCart(HttpSession httpSession, int pagei, int id)
+    {
+        List<GrafphicThing> cartItems = (List<GrafphicThing>) httpSession.getAttribute("cartItems");
+        if (cartItems == null)
+            cartItems = new ArrayList<>();
+        cartItems.add(koszulkiService.getKoszulkaById(id));
+        httpSession.setAttribute("cartItems", cartItems);
+        return new ModelAndView("redirect:/koszulki1?pagei="+pagei);
+    }
 }

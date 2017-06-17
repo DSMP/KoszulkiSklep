@@ -35,5 +35,8 @@ public class KoszulkiService {
         koszulkiRepo.delete(id);
     }
 
-
+    public Koszulka getKoszulkaById(int id)
+    {
+        return koszulkiRepo.findOne(id);
+    }
 }

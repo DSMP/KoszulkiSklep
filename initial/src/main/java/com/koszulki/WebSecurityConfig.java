@@ -44,8 +44,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.
                 authorizeRequests()
                 .antMatchers("/","/index").permitAll()
-                .antMatchers("/login", "/koszulki", "/koszulki1").permitAll()
-                .antMatchers("/registration").permitAll()
+                .antMatchers("/login", "/koszulki", "/koszulki1", "/koszulki2", "/koszulki2", "**").permitAll()
+                .antMatchers("/registration", "/cart").permitAll()
                 .antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
                 .authenticated().and().csrf().disable().formLogin()
                 .loginPage("/login").failureUrl("/login?error=true")
