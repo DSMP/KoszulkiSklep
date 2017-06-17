@@ -3,8 +3,12 @@ package com.koszulki.Services;
 import com.koszulki.Entity.CartItem;
 import com.koszulki.Entity.GrafphicThing;
 import com.koszulki.Entity.MyOrder;
+import com.koszulki.Entity.MyUser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -12,6 +16,8 @@ import java.util.List;
  */
 @Service
 public class CartService {
+    @Autowired
+    UserService userService;
     public void searchAndDeleteItem(List<CartItem> orderList, int id)
     {
         for (int i = 0; i < orderList.size(); i++) {
@@ -52,5 +58,21 @@ public class CartService {
                 orderList.get(i).setQuantity(quantity);
             }
         }
+    }
+
+    public List<MyOrder> ToOrder(List<CartItem> orderList, String adress, String emailUserLogged)
+    {
+        List<MyOrder> dbOrderList = new ArrayList<>();
+        for (int i = 0; i < orderList.size(); i++) {
+            MyOrder order = new MyOrder();
+            order.setQuantity(orderList.get(i).getQuantity());
+            order.setGrafphicThing(orderList.get(i).getGrafphicThing());
+            order.setDateCreated(new Date());
+            order.setDone(false);
+            order.setAdres(adress);
+            order.setCustomerOrdered(userService.findUserByEmail(emailUserLogged));
+            dbOrderList.add(order);
+        }
+        return dbOrderList;
     }
 }

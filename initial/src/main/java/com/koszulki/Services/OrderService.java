@@ -5,6 +5,8 @@ import com.koszulki.Entity.MyOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Damian on 17.06.2017.
  */
@@ -25,5 +27,11 @@ public class OrderService {
     public Iterable<MyOrder> getOrders()
     {
         return orderRepository.findAll();
+    }
+
+    public void addOrders(List<MyOrder> orders) {
+        for (MyOrder order: orders) {
+            orderRepository.save(order);
+        }
     }
 }
