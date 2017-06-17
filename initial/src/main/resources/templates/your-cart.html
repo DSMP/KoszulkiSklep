@@ -69,7 +69,12 @@
                 <div class="panel panel-primary">
                     <div class="panel-heading"><p th:text="${item.name}"><p/></div>
                     <div class="panel-body"><img th:src="@{'data:image/jpg;base64,'+${item.getEncodedPicture()}}" class="img-responsive" style="width:30%" alt="Image"></div>
-                    <div class="panel-footer"><p th:text="'Size: '+${item.size}"><p/></div>
+                    <div class="panel-footer">
+                        <p th:text="'Size: '+${item.size}"><p/>
+                        <a class="label label-danger" th:href="@{${'cart/remove'}(id=${item.id})}">
+                            <span class="glyphicon glyphicon-remove"/></span> Remove
+                        </a>
+                    </div>
                 </div>
             </div>
         </th:block>
