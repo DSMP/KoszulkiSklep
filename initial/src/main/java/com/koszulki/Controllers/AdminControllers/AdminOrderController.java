@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Created by Damian on 18.06.2017.
@@ -33,6 +34,18 @@ public class AdminOrderController {
         Page<MyOrder> page = orderService.getPageOrder(pagei);
         uiModel.addAttribute("page", page);
         return "admin/manage-orders";
+    }
+    @RequestMapping(value = "/checkSent", method = RequestMethod.GET)
+    public ModelAndView checkDone(int orderId)
+    {
+        orderService.checkOrderDone(orderId);
+        return new ModelAndView("redirect:/admin/manage-orders");
+    }
+    @RequestMapping(value = "/checkCanceled", method = RequestMethod.GET)
+    public ModelAndView checkCanceled(int orderId)
+    {
+        orderService.checkOrderCanceled(orderId);
+        return new ModelAndView("redirect:/admin/manage-orders");
     }
 }
 

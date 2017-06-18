@@ -66,10 +66,12 @@
                 <!--<button class="btn btn-sm btn-success" type="submit">Remove t-shirt</button>-->
             <!--</form>-->
         <!--</div>-->
-        <div class="col-lg-8 myclass">
+        <div class="col-lg-8 mydivorder">
             <h2>Customer Orders</h2>
             <table class="table table-hover ">
                 <tr>
+                    <td></td>
+                    <td></td>
                     <td>Order ID</td>
                     <td>Client Name</td>
                     <td>Client Surname</td>
@@ -81,6 +83,9 @@
                 </tr>
                 <th:block th:each="order : ${page.getContent()}">
                     <tr>
+                        <td><a class="btn btn-success" th:href="@{${'/admin/manage-orders/checkSent'}(orderId = ${order.id})}">Check Sent</a></td>
+                        <td><a class="btn btn-default" th:href="@{${'/admin/manage-orders/checkCanceled'}(orderId = ${order.id})}">Check Canceled</a></td>
+                        <!--<td><input class="checkbox" type="checkbox" th:name="checkOrder"></td>-->
                         <td th:text="${order.id}">...</td>
                         <td th:text="${order.customerOrdered.name}">...</td>
                         <td th:text="${order.customerOrdered.surname}">...</td>
@@ -91,6 +96,7 @@
                         <td th:text="${order.canceled}">...</td>
                     </tr>
                 </th:block>
+                <!--<a th:href="@{/admin/manage-order/isDone}">CheckDone</a>-->
             </table>
             <div class="table-pagination">
                 <ul class="pagination">

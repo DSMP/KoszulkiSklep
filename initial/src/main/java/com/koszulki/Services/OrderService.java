@@ -41,4 +41,15 @@ public class OrderService {
         Pageable pageRequest = new PageRequest(page,6);
         return orderRepository.findAll(pageRequest);
     }
+
+    public void checkOrderDone(int orderId) {
+        MyOrder myOrder = orderRepository.findOne(orderId);
+        myOrder.setDone(!myOrder.isDone());
+        orderRepository.save(myOrder);
+    }
+    public void checkOrderCanceled(int orderId) {
+        MyOrder myOrder = orderRepository.findOne(orderId);
+        myOrder.setCanceled(!myOrder.isCanceled());
+        orderRepository.save(myOrder);
+    }
 }
