@@ -24,7 +24,7 @@
             color:#fff;
         }
 
-        form {
+        .mform {
             width: 50%;
             margin: 0 auto;
         }
@@ -35,15 +35,16 @@
     </style>
 </head>
 <body>
+<a th:href="@{/koszulki}" class="btn btn-md btn-primary btn-block mform" type="Submit">Go To T-shirt Page</a>
 <form th:action="@{/}" method="get">
-    <button class="btn btn-md btn-warning btn-block" type="Submit">Go To Login Page</button>
+    <button class="btn btn-md btn-warning btn-block mform" type="Submit">Go To Login Page</button>
 </form>
 
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <form autocomplete="off" action="#" th:action="@{/registration}"
-                  th:object="${user}" method="post" class="form-horizontal"
+                  th:object="${user}" method="post" class="form-horizontal mform"
                   role="form">
                 <h2>Registration Form</h2>
                 <div class="form-group">
