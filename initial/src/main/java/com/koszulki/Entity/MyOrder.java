@@ -1,6 +1,9 @@
 package com.koszulki.Entity;
 
+import com.sun.istack.internal.Nullable;
+
 import javax.persistence.*;
+import javax.validation.constraints.Null;
 import java.util.Date;
 
 /**
@@ -19,6 +22,7 @@ public class MyOrder {
     Date dateCreated;
     long quantity;
     boolean isDone = false;
+    boolean isCanceled = false;
     String Adres;
 
     public MyOrder() {
@@ -81,5 +85,13 @@ public class MyOrder {
 
     public void setAdres(String adres) {
         Adres = adres;
+    }
+
+    public boolean isCanceled() {
+        return isCanceled;
+    }
+
+    public void setCanceled(boolean canceled) {
+        isCanceled = canceled;
     }
 }

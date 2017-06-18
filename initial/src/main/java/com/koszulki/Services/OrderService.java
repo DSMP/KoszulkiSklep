@@ -3,6 +3,9 @@ package com.koszulki.Services;
 import com.koszulki.DAO.IOrderRepository;
 import com.koszulki.Entity.MyOrder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,5 +36,9 @@ public class OrderService {
         for (MyOrder order: orders) {
             orderRepository.save(order);
         }
+    }
+    public Page<MyOrder> getPageOrder(int page) {
+        Pageable pageRequest = new PageRequest(page,6);
+        return orderRepository.findAll(pageRequest);
     }
 }
