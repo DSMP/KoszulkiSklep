@@ -20,7 +20,7 @@ public class MyOrder {
     long quantity;
     boolean isDone = false;
     boolean isCanceled = false;
-    String Adres;
+    String adres;
 
     public MyOrder() {
     }
@@ -77,11 +77,11 @@ public class MyOrder {
     }
 
     public String getAdres() {
-        return Adres;
+        return adres;
     }
 
     public void setAdres(String adres) {
-        Adres = adres;
+        this.adres = adres;
     }
 
     public boolean isCanceled() {
