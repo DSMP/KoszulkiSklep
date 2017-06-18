@@ -25,6 +25,10 @@
             background-color: #f2f2f2;
             padding: 25px;
         }
+        .form-group.required .control-label:after {
+            content:"*";
+            color:red;
+        }
     </style>
 </head>
 <body>
@@ -103,9 +107,10 @@
     <!--</ul>-->
 <!--</div>-->
 
-<div class="text-center">
+<div class="text-center form-group required">
     <form th:action="@{/cart/deliveryForm}" method="post" role="form" autocomplete="on">
-        <input class="input-sm" th:name="adress" placeholder="Your Adress"/>
+        <label class="control-label">Put Your Adress: </label>
+        <input class="input-sm" th:name="adress" placeholder="Your Adress" required/>
         <!--<input class="input-sm" th:name="phone" placeholder="Your phone"/>-->
         <!--<input class="input-sm" th:name="name" placeholder="Your Name"/>-->
         <!--<input class="input-sm" th:name="surname" placeholder="Your Last Name"/>-->

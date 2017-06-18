@@ -17,6 +17,7 @@ public class MyUser implements Serializable{
     @Column(name = "user_id")
     private Integer id;
     private String name;
+    private String surname;
     private String email;
     @NotEmpty(message = "*Please provide your password")
     private String password;
@@ -89,6 +90,14 @@ public class MyUser implements Serializable{
 
     public void setNumber(long number) {
         Number = number;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     @Override

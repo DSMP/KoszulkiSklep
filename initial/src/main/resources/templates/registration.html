@@ -7,6 +7,32 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        input[type="tel"] {
+            border: 1px solid #ddd;
+            padding: 4px 8px;
+        }
+        input[type="tel"]:focus {
+            border: 1px solid #000;
+        }
+
+        input[type="submit"] {
+            font-weight: bold;
+            padding: 4px 8px;
+            border:1px solid #000;
+            background: #3b5998;
+            color:#fff;
+        }
+
+        form {
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        .p {
+            padding-top: 30px;
+        }
+    </style>
 </head>
 <body>
 <form th:action="@{/}" method="get">
@@ -29,14 +55,14 @@
                     </div>
                 </div>
 
-                <!--<div class="form-group">-->
-                    <!--<div class="col-sm-9">-->
-                        <!--<label	th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"-->
-                                  <!--class="validation-message"></label>-->
-                        <!--<input type="text" th:field="*{lastName}"-->
-                               <!--placeholder="Last Name" class="form-control" />-->
-                    <!--</div>-->
-                <!--</div>-->
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <label	th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"
+                                  class="validation-message"></label>
+                        <input type="text" th:field="*{surname}"
+                               placeholder="Last Name" class="form-control" />
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="col-sm-9">
                         <input type="text" th:field="*{email}" placeholder="Email"
@@ -50,6 +76,14 @@
                         <input type="password" th:field="*{password}"
                                placeholder="Password" class="form-control" /> <label
                             th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                            class="validation-message"></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="tel" th:field="*{number}" pattern="^\d{3}\d{3}\d{3}$"
+                               placeholder="Phone Number format: XXXXXXXXX" class="form-control" /> <label
+                            th:if="${#fields.hasErrors('number')}" th:errors="*{number}"
                             class="validation-message"></label>
                     </div>
                 </div>

@@ -57,6 +57,7 @@ public class CartController {
     {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         orderService.addOrders(cartService.ToOrder((List<CartItem>) httpSession.getAttribute("cartItems"),adress, ((User)auth.getPrincipal()).getUsername()));
+        httpSession.removeAttribute("cartItems");
         return new ModelAndView("redirect:/koszulki");
     }
 }
