@@ -68,10 +68,10 @@
         <div class="col-lg-4">
             <h2>Edit T-shirt</h2>
             <form th:action="@{/admin/editkoszulka}" method="post" role="form" autocomplete="off" enctype="multipart/form-data">
-                <input type="number" th:name="id" placeholder="Which Id of T-shirt"/>
+                <input type="number" th:value="0" th:name="id" placeholder="Which Id of T-shirt"/><br/>
                 <input type="text" th:name="name" placeholder="New Name"/>
                 <input type="file" th:name="picture" placeholder="New Picture"/>
-                <input type="number" th:name="size" placeholder="New Size"/><br />
+                <input type="number" th:value="0" th:name="size" placeholder="New Size"/><br />
                 <button class="btn btn-sm btn-success" type="submit">Edit t-shirt</button>
             </form>
         </div>
