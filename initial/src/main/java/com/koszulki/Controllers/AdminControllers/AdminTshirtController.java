@@ -52,4 +52,14 @@ public class AdminTshirtController {
         koszulkiService.removeKoszulka(id);
         return new ModelAndView("redirect:/admin/manage-koszulka");
     }
+    @RequestMapping(value = "/editkoszulka", method = RequestMethod.POST)
+    public ModelAndView editKoszulka(int id, String name, @RequestParam MultipartFile picture, int size)
+    {
+        try {
+            koszulkiService.editTshirt(id, name, picture, size);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return new ModelAndView("redirect:/admin/manage-koszulka");
+    }
 }
