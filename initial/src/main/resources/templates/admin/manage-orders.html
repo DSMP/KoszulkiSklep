@@ -71,8 +71,8 @@
                 <th:block th:each="order : ${page.getContent()}">
                     <tr>
                         <td th:text="${order.id}">...</td>
-                        <td th:text="${order.name}">...</td>
-                        <td th:text="${order.size}">...</td>
+                        <td th:text="${order.quantity}">...</td>
+                        <td th:text="${order.done}">...</td>
                         <!--<td th:text="${koszulka.picture}">...</td>-->
                     </tr>
                 </th:block>
