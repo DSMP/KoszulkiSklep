@@ -1,9 +1,6 @@
 package com.koszulki.Entity;
 
-import com.sun.istack.internal.Nullable;
-
 import javax.persistence.*;
-import javax.validation.constraints.Null;
 import java.util.Date;
 
 /**
@@ -18,7 +15,7 @@ public class MyOrder {
     @ManyToOne
     GrafphicThing grafphicThing;
     @ManyToOne
-    MyUser CustomerOrdered;
+    MyUser customerOrdered;
     Date dateCreated;
     long quantity;
     boolean isDone = false;
@@ -56,11 +53,11 @@ public class MyOrder {
     }
 
     public MyUser getCustomerOrdered() {
-        return CustomerOrdered;
+        return customerOrdered;
     }
 
     public void setCustomerOrdered(MyUser customerOrdered) {
-        CustomerOrdered = customerOrdered;
+        this.customerOrdered = customerOrdered;
     }
 
     public long getQuantity() {

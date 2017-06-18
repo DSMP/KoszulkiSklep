@@ -55,25 +55,24 @@
                 <input type="text" th:name="name" placeholder="Name"/>
                 <input type="file" th:name="picture" placeholder="Picture"/>
                 <input type="number" th:name="size" placeholder="Size"/><br />
-                <button class="btn btn-lg btn-success" type="submit" >Add t-shirt</button>
+                <button class="btn btn-sm btn-success" type="submit" >Add t-shirt</button>
             </form>
         </div>
         <div class="col-lg-4">
             <h2>Remove T-shirt</h2>
             <form th:action="@{/admin/manage-orders/removekoszulka}" method="post" role="form" autocomplete="off" action="#" enctype="multipart/form-data">
                 <input type="number" th:name="id" placeholder="Id Koszulki"/><br />
-                <button class="btn btn-lg btn-success" type="submit">Remove t-shirt</button>
+                <button class="btn btn-sm btn-success" type="submit">Remove t-shirt</button>
             </form>
         </div>
         <div class="col-lg-4">
-            <h2>T-shirts</h2>
+            <h2>Customer Orders</h2>
             <table class="table table-hover">
                 <th:block th:each="order : ${page.getContent()}">
                     <tr>
                         <td th:text="${order.id}">...</td>
                         <td th:text="${order.quantity}">...</td>
                         <td th:text="${order.done}">...</td>
-                        <!--<td th:text="${koszulka.picture}">...</td>-->
                     </tr>
                 </th:block>
             </table>

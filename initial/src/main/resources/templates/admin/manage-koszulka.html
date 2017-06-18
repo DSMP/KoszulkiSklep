@@ -78,6 +78,11 @@
         <div class="col-lg-4">
             <h2>T-shirts</h2>
             <table class="table table-hover">
+                <tr>
+                    <td>Tshirt ID</td>
+                    <td>Tshirt Name</td>
+                    <td>Tshirt Size</td>
+                </tr>
                 <th:block th:each="koszulka : ${page.getContent()}">
                     <tr>
                         <td th:text="${koszulka.id}">...</td>
