@@ -52,11 +52,11 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="/koszulki">T-Shirts</a></li>
-                <li><a href="/bilboards">Bilboards</a></li>
-                <li><a href="/labels">Labels</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li><a href="index.html" th:text="#{homeNavButton}">Home</a></li>
+                <li class="active"><a th:href="'/koszulki'" th:text="#{tshirtNavButton}">T-Shirts</a></li>
+                <li><a href="/bilboards" th:text="#{bilboardsNavButton}">Bilboards</a></li>
+                <li><a href="/labels" th:text="#{stickersNavButtn}">Labels</a></li>
+                <li><a href="/contact" th:text="#{contactNavButton}">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a sec:authorize="isAuthenticated()" sec:authentication="name"></a></li>
