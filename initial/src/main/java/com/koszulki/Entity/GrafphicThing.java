@@ -22,6 +22,8 @@ public abstract class GrafphicThing
 //    @Lob
     @Type(type="org.hibernate.type.BinaryType")
     byte[] picture;
+    @Column(nullable = true)
+    float price;
 
     public Integer getId() {
         return id;
@@ -48,6 +50,14 @@ public abstract class GrafphicThing
 
     public void setPicture(byte[] picture) {
         this.picture = picture;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
     }
 }
 

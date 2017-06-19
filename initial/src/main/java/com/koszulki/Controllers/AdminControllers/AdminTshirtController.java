@@ -40,9 +40,9 @@ public class AdminTshirtController {
     }
 
     @RequestMapping(value = "/addkoszulka", method = RequestMethod.POST)
-    public ModelAndView addKoszulki(Model uiModel, @RequestParam String name, @RequestParam MultipartFile picture, @RequestParam Integer size) throws IOException {
+    public ModelAndView addKoszulki(Model uiModel, @RequestParam String name, @RequestParam MultipartFile picture, @RequestParam Integer size, @RequestParam Integer price) throws IOException {
         Koszulka koszulka= new Koszulka();
-        koszulka.setName(name); koszulka.setPicture(picture.getBytes()); koszulka.setSize(size);
+        koszulka.setName(name); koszulka.setPicture(picture.getBytes()); koszulka.setSize(size); koszulka.setPrice(price);
         koszulkiService.addKoszulka(koszulka);
         return new ModelAndView("redirect:/admin/manage-koszulka");
     }
@@ -53,10 +53,10 @@ public class AdminTshirtController {
         return new ModelAndView("redirect:/admin/manage-koszulka");
     }
     @RequestMapping(value = "/editkoszulka", method = RequestMethod.POST)
-    public ModelAndView editKoszulka(int id, String name, @RequestParam MultipartFile picture, int size)
+    public ModelAndView editKoszulka(int id, String name, @RequestParam MultipartFile picture, int size, Integer price)
     {
         try {
-            koszulkiService.editTshirt(id, name, picture, size);
+            koszulkiService.editTshirt(id, name, picture, size, price);
         } catch (IOException e) {
             e.printStackTrace();
         }

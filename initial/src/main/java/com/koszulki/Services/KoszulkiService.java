@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.Null;
 import java.io.IOException;
 import java.util.List;
 
@@ -42,7 +43,7 @@ public class KoszulkiService {
         return koszulkiRepo.findOne(id);
     }
 
-    public void editTshirt(int id, String newName, MultipartFile picture, int size) throws IOException {
+    public void editTshirt(int id, String newName, MultipartFile picture, int size, Integer price) throws IOException {
         Koszulka koszulka = koszulkiRepo.findOne(id);
         if (!newName.equals(""))
             koszulka.setName(newName);
@@ -50,6 +51,8 @@ public class KoszulkiService {
             koszulka.setPicture(picture.getBytes());
         if (size != 0)
             koszulka.setSize(size);
+        if (price != null)
+            koszulka.setPrice(price);
         koszulkiRepo.save(koszulka);
 //        koszulkiRepo.updateTshirt(koszulka.getName(),koszulka.getPicture(), koszulka.getSize(),koszulka.getId());
     }

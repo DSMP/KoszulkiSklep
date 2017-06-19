@@ -55,6 +55,7 @@
             <form th:action="@{/admin/addkoszulka}" method="post" role="form" autocomplete="off" enctype="multipart/form-data">
                 <input type="text" th:name="name" placeholder="Name"/>
                 <input type="file" th:name="picture" placeholder="Picture"/>
+                <input type="number" th:name="price" placeholder="Price"/>
                 <input type="number" th:name="size" placeholder="Size"/><br />
                 <button class="btn btn-sm btn-success" type="submit" >Add t-shirt</button>
             </form>
@@ -72,6 +73,7 @@
                 <input type="number" th:value="0" th:name="id" placeholder="Which Id of T-shirt"/><br/>
                 <input type="text" th:name="name" placeholder="New Name"/>
                 <input type="file" th:name="picture" placeholder="New Picture"/>
+                <input type="number" th:name="price" placeholder="New Price"/>
                 <input type="number" th:value="0" th:name="size" placeholder="New Size"/><br />
                 <button class="btn btn-sm btn-success" type="submit">Edit t-shirt</button>
             </form>
@@ -83,12 +85,14 @@
                     <td>Tshirt ID</td>
                     <td>Tshirt Name</td>
                     <td>Tshirt Size</td>
+                    <td>Tshirt Price</td>
                 </tr>
                 <th:block th:each="koszulka : ${page.getContent()}">
                     <tr>
                         <td th:text="${koszulka.id}">...</td>
                         <td th:text="${koszulka.name}">...</td>
                         <td th:text="${koszulka.size}">...</td>
+                        <td th:text="${koszulka.price}">...</td>
                         <!--<td th:text="${koszulka.picture}">...</td>-->
                     </tr>
                 </th:block>

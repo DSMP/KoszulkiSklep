@@ -49,7 +49,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li><a href="index.html">Home</a></li>
-                <li class="active"><a href="#">T-Shirts</a></li>
+                <li class="active"><a href="/kuszulka">T-Shirts</a></li>
                 <li><a href="#">Bilboards</a></li>
                 <li><a href="#">Labels</a></li>
                 <li><a href="#">Contact</a></li>
@@ -72,13 +72,16 @@
                     <div class="panel-heading"><p th:text="${item.name}"><p/></div>
                     <div class="panel-body"><img th:src="@{'data:image/jpg;base64,'+${item.getEncodedPicture()}}" class="img-responsive" style="width:100%" alt="Image"></div>
                     <div class="panel-footer">
-                        <p th:text="'Size: '+${item.size}"><p/>
+                        <ul class="list-inline">
+                            <li><strong><p class="text-info" th:text="'Size: '+${item.size}"></p></strong></li>
+                            <li><strong><p class="text-info" th:text="'Price: '+${item.price}"></p></strong></li>
+                        </ul>
                         <p>
                             <a th:href="@{${'koszulki2'}(pagei = ${page.getNumber()}, id=${item.id})}" class="btn btn-warning btn-large">
                                 <span class="glyphicon-shopping-cart glyphicon">
                                 </span> Order Now
                             </a>
-                        <p/>
+                        </p>
                     </div>
                 </div>
             </div>
