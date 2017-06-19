@@ -9,6 +9,18 @@
     <link rel="stylesheet" href="/css/mycss.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#locales").change(function () {
+                var selectedOption = $('#locales').val();
+                if (selectedOption != ''){
+                    window.location.replace('international?lang=' + selectedOption);
+                }
+            });
+        });
+    </script>
     <style>
         /* Remove the navbar's default rounded borders and increase the bottom margin */
         .navbar {
@@ -65,14 +77,13 @@
     </div>
 </nav>
 
-<div class="container">
+<div class="container" style="margin-bottom: 15px;">
     <div class="row">
         <div class="col-md-offset-5">
             <form class="form-inline" th:action="${'/search'}">
                 <label>Search</label>
                 <input type="text" th:name="searchWord" placeholder="Search items">
                 <button type="submit" class="btn btn-primary">Search</button>
-                <!--th:action="@{${'/search'}(searchWord = ${searchWord})}"-->
             </form>
         </div>
     </div>
@@ -116,6 +127,13 @@
 <br><br><br>
 
 <footer class="container-fluid text-center">
+    <h1 th:text="#{greeting}"></h1>
+    <span th:text="#{lang.change}"></span>:
+    <select id="locales">
+        <option value=""></option>
+        <option value="en" th:text="#{lang.eng}"></option>
+        <option value="pl" th:text="#{lang.pl}"></option>
+    </select>
     <p>Online Store Copyright</p>
     <form class="form-inline">Get deals:
         <input type="email" class="form-control" size="50" placeholder="Email Address">
