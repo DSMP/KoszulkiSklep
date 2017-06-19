@@ -46,7 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/","/index").permitAll()
                 .antMatchers("/login", "/koszulki", "/koszulki1", "/koszulki2").permitAll()
                 .antMatchers("/registration").permitAll()
-                .antMatchers(" /cart").hasAuthority("USER")
+                .antMatchers("/cart").hasAuthority("USER")
                 .antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
                 .authenticated().and().csrf().disable().formLogin()
                 .loginPage("/login").failureUrl("/login?error=true")

@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/mycss.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
@@ -49,10 +50,10 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li><a href="index.html">Home</a></li>
-                <li class="active"><a href="/koszulki">T-Shirts</a></li>
-                <li><a href="#">Bilboards</a></li>
-                <li><a href="#">Labels</a></li>
-                <li><a href="#">Contact</a></li>
+                <li class="active"><a th:href="'/koszulki'">T-Shirts</a></li>
+                <li><a href="/bilboards">Bilboards</a></li>
+                <li><a href="/labels">Labels</a></li>
+                <li><a href="/contact">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a sec:authorize="isAuthenticated()" sec:authentication="name"></a></li>
@@ -64,6 +65,17 @@
     </div>
 </nav>
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-5">
+            <form class="form-inline">
+                <label>Search</label>
+                <input th:value="searchWord" placeholder="Search items">
+                <a th:href="@{${'/search'}(searchWord = ${searchWord})}" class="btn btn-primary">Search</a>
+            </form>
+        </div>
+    </div>
+</div>
 <div class="container">
     <div class="row">
         <th:block th:each="item : ${page.getContent()}">
