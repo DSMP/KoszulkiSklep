@@ -5,6 +5,9 @@ import com.koszulki.DAO.IUserRepository;
 import com.koszulki.Entity.MyUser;
 import com.koszulki.Entity.MyUserRole;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -65,5 +68,30 @@ public class UserService {
         user.setRoles(new HashSet<MyUserRole>(Arrays.asList(userRole)));
         userRepository.save(user);
     }
+    public void registerAdmin(MyUser admin)
+    {
+        admin.setPassword(bCryptPasswordEncoder.encode(admin.getPassword()));
+        List<MyUserRole> MyUserRole = (List<com.koszulki.Entity.MyUserRole>) roleRepository.findAll();
+        admin.setActive(1);
+        MyUserRole userRole = null;
+        for (int i = 0; i < MyUserRole.size(); i++) {
+            if (MyUserRole.get(i).getRole().equals("ADMIN"))
+                userRole = MyUserRole.get(i);
+        }
+        admin.setRoles(new HashSet<MyUserRole>(Arrays.asList(userRole)));
+        userRepository.save(admin);
+    }
 
+    public Page<MyUser> getAllUsers(int pagei) {
+        Pageable pageRequest = new PageRequest(pagei,6);
+        return userRepository.findAll(pageRequest);
+    }
+
+    public void removeUser(Integer id) {
+        userRepository.delete(id);
+    }
+
+    public void editTshirt(int id, String name, String surname, String email, String password) {
+
+    }
 }

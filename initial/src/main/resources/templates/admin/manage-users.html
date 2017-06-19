@@ -18,7 +18,7 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <title>Manage Orders</title>
+    <title>Manage Others</title>
 </head>
 <body>
 
@@ -33,70 +33,73 @@
                 <li><a href="manage-panel.html">Home</a></li>
                 <li><a href="manage-koszulka.html">Manage T-shirts</a></li>
                 <li><a href="manage-bilboard.html">Manage Bilboards</a></li>
-                <li><a href="manage-naklejka.html">Manage Labels</a></li>
+                <li><a href="magae-naklejka.html">Manage Labels</a></li>
                 <li><a href="manage-other.html">Manage Others</a></li>
-                <li><a href="manage-users.html">Manage Users</a></li>
-                <li class="active"><a href="admin/manage-orders.html">Manage Orders</a></li>
+                <li class="active"><a href="manage-users.html">Manage Users</a></li>
+                <li><a href="manage-orders.html">Manage Orders</a></li>
             </ul>
         </nav>
     </div>
 
     <!-- Jumbotron -->
     <div class="jumbotron">
-        <h1>Manage T-shirts!</h1>
-        <p class="lead">Manage t-shirts of your store</p>
+        <h1>Manage User Account</h1>
+        <p class="lead">Manage User Account</p>
         <!--<p><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p>-->
     </div>
 
     <!-- Example row of columns -->
     <div class="row">
-        <!--<div class="col-lg-4">-->
-            <!--<h2>Add T-shirt</h2>-->
-            <!--<form th:action="@{/admin/manage-orders/addkoszulka}" method="post" role="form" autocomplete="off" action="#" enctype="multipart/form-data">-->
-                <!--<input type="text" th:name="name" placeholder="Name"/>-->
-                <!--<input type="file" th:name="picture" placeholder="Picture"/>-->
-                <!--<input type="number" th:name="size" placeholder="Size"/><br />-->
-                <!--<button class="btn btn-sm btn-success" type="submit" >Add t-shirt</button>-->
-            <!--</form>-->
-        <!--</div>-->
-        <!--<div class="col-lg-4">-->
-            <!--<h2>Remove T-shirt</h2>-->
-            <!--<form th:action="@{/admin/manage-orders/removekoszulka}" method="post" role="form" autocomplete="off" action="#" enctype="multipart/form-data">-->
-                <!--<input type="number" th:name="id" placeholder="Id Koszulki"/><br />-->
-                <!--<button class="btn btn-sm btn-success" type="submit">Remove t-shirt</button>-->
-            <!--</form>-->
-        <!--</div>-->
+        <div class="col-lg-4">
+            <h2>Add new Admin</h2>
+            <form th:action="@{/admin/addadmin}" method="post" role="form" autocomplete="off" enctype="multipart/form-data">
+                <input type="text" th:name="name" placeholder="Name"/>
+                <input type="text" th:name="surname" placeholder="Last Name"/>
+                <input type="text" th:name="email" placeholder="E-mail"/>
+                <input type="password" th:name="password" placeholder="Password"/>
+                <input type="tel" th:name="number" placeholder="Phone Number in format XXXXXXXXX"/><br />
+                <button class="btn btn-sm btn-success" type="submit" >Add Admin Account</button>
+            </form>
+        </div>
+        <div class="col-lg-4">
+            <h2>Remove User</h2>
+            <form th:action="@{/admin/removeuser}" method="post" role="form" autocomplete="off" enctype="multipart/form-data">
+                <input type="number" th:name="id" placeholder="User ID"/><br />
+                <button class="btn btn-sm btn-success" type="submit">Remove User Account</button>
+            </form>
+        </div>
+        <div class="col-lg-4">
+            <h2>Edit User</h2>
+            <form th:action="@{/admin/edituser}" method="post" role="form" autocomplete="off" enctype="multipart/form-data">
+                <input type="number" th:value="0" th:name="id" placeholder="Which Id of User"/><br/>
+                <input type="text" th:name="name" placeholder="Name"/>
+                <input type="text" th:name="surname" placeholder="Last Name"/>
+                <input type="text" th:name="email" placeholder="E-mail"/>
+                <input type="tel" th:name="number" placeholder="Phone Number in format XXXXXXXXX"/><br />
+                <button class="btn btn-sm btn-success" type="submit">Edit User Account</button>
+            </form>
+        </div>
         <div class="col-lg-8 mydivorder">
-            <h2>Customer Orders</h2>
+            <h2 class="text-center">Users</h2>
             <table class="table table-hover ">
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td>Order ID</td>
-                    <td>Client Name</td>
-                    <td>Client Surname</td>
-                    <td>Item to Send</td>
-                    <td>Quantity</td>
-                    <td>Delivery Adress</td>
-                    <td>Is Done?</td>
-                    <td>Is Canceled?</td>
+                    <td>User ID</td>
+                    <td>User Name</td>
+                    <td>User Surname</td>
+                    <td>User E-mail</td>
+                    <td>User Phone Number</td>
+                    <td>User Status</td>
                 </tr>
-                <th:block th:each="order : ${page.getContent()}">
+                <th:block th:each="user : ${page.getContent()}">
                     <tr>
-                        <td><a class="btn btn-success" th:href="@{${'/admin/manage-orders/checkSent'}(orderId = ${order.id})}">Check Sent</a></td>
-                        <td><a class="btn btn-default" th:href="@{${'/admin/manage-orders/checkCanceled'}(orderId = ${order.id})}">Check Canceled</a></td>
-                        <!--<td><input class="checkbox" type="checkbox" th:name="checkOrder"></td>-->
-                        <td th:text="${order.id}">...</td>
-                        <td th:text="${order.customerOrdered.name}">...</td>
-                        <td th:text="${order.customerOrdered.surname}">...</td>
-                        <td th:text="${order.grafphicThing.name}">...</td>
-                        <td th:text="${order.quantity}">...</td>
-                        <td th:text="${order.adres}">...</td>
-                        <td th:text="${order.done}">...</td>
-                        <td th:text="${order.canceled}">...</td>
+                        <td th:text="${user.id}">...</td>
+                        <td th:text="${user.name}">...</td>
+                        <td th:text="${user.surname}">...</td>
+                        <td th:text="${user.email}">...</td>
+                        <td th:text="${user.number}">...</td>
+                        <td th:text="${user.active}">...</td>
                     </tr>
                 </th:block>
-                <!--<a th:href="@{/admin/manage-order/isDone}">CheckDone</a>-->
             </table>
             <div class="table-pagination">
                 <ul class="pagination">
@@ -119,6 +122,3 @@
     </footer>
 
 </div> <!-- /container -->
-
-</body>
-</html>

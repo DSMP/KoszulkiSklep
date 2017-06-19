@@ -29,7 +29,7 @@ public class SimpleAuthenticationSuccesHandler implements AuthenticationSuccessH
         authorities.forEach(authority -> {
             if(authority.getAuthority().equals("USER")) {
                 try {
-                    redirectStrategy.sendRedirect(arg0, arg1, "/user");
+                    redirectStrategy.sendRedirect(arg0, arg1, "/koszulki");
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();

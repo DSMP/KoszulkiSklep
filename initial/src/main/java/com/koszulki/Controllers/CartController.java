@@ -42,6 +42,7 @@ public class CartController {
 
         List<CartItem> cartItems = (List<CartItem>) httpSession.getAttribute("cartItems");
         cartService.searchAndDeleteItem(cartItems,id);
+        httpSession.setAttribute("cartItems", cartItems);
         return new ModelAndView("redirect:/cart");
     }
     @RequestMapping(value = "/changeQuantity", method = RequestMethod.POST)

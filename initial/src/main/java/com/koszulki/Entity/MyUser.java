@@ -21,8 +21,8 @@ public class MyUser implements Serializable{
     private String email;
     @NotEmpty(message = "*Please provide your password")
     private String password;
-    private Integer Active;
-    private long Number;
+    private Integer active;
+    private long number;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -77,19 +77,19 @@ public class MyUser implements Serializable{
     }
 
     public Integer getActive() {
-        return Active;
+        return active;
     }
 
     public void setActive(Integer active) {
-        Active = active;
+        this.active = active;
     }
 
     public long getNumber() {
-        return Number;
+        return number;
     }
 
     public void setNumber(long number) {
-        Number = number;
+        this.number = number;
     }
 
     public String getSurname() {

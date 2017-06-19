@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/justified-nav.css">
+    <link rel="stylesheet" href="/css/mycss.css">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 
@@ -26,15 +27,15 @@
     <!-- The justified navigation menu is meant for single line per list item.
          Multiple lines will require custom code not provided by Bootstrap. -->
     <div class="masthead">
-        <h3 class="text-muted">Damian Smug Project</h3>
+        <h3 class="text-muted">Damian Smug Project <a href="/logout">Logout</a></h3>
         <nav>
             <ul class="nav nav-justified">
-                <li><a href="../index.html">Home</a></li>
+                <li><a href="manage-panel.html">Home</a></li>
                 <li class="active"><a href="admin/manage-koszulka.html">Manage T-shirts</a></li>
                 <li><a href="manage-bilboard.html">Manage Bilboards</a></li>
                 <li><a href="manage-naklejka.html">Manage Labels</a></li>
                 <li><a href="manage-other.html">Manage Others</a></li>
-                <li><a href="users.html">Manage Users</a></li>
+                <li><a href="managae-users.html">Manage Users</a></li>
                 <li><a href="manage-orders.html">Manage Orders</a></li>
             </ul>
         </nav>
@@ -75,9 +76,9 @@
                 <button class="btn btn-sm btn-success" type="submit">Edit t-shirt</button>
             </form>
         </div>
-        <div class="col-lg-4">
-            <h2>T-shirts</h2>
-            <table class="table table-hover">
+        <div class="col-lg-8 mydivorder">
+            <h2 class="text-center">T-shirts</h2>
+            <table class="table table-hover ">
                 <tr>
                     <td>Tshirt ID</td>
                     <td>Tshirt Name</td>
@@ -106,6 +107,8 @@
             </div>
         </div>
     </div>
+
+
 
     <!-- Site footer -->
     <footer class="footer">

@@ -30,7 +30,7 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @RequestMapping(value={"/", "/login"}, method = RequestMethod.GET)
+    @RequestMapping(value={"/login"}, method = RequestMethod.GET)
     public ModelAndView login(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
@@ -78,11 +78,11 @@ public class UserController {
         modelAndView.setViewName("admin/hello");
         return modelAndView;
     }
-    @RequestMapping("index")
+    @RequestMapping("/index")
     public ModelAndView index()
     {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("index");
+        modelAndView.setViewName("kosuzlki");
         return modelAndView;
     }
     @RequestMapping(value = "/admin", method = RequestMethod.GET)

@@ -44,12 +44,12 @@ public class OrderService {
 
     public void checkOrderDone(int orderId) {
         MyOrder myOrder = orderRepository.findOne(orderId);
-        myOrder.setDone(!myOrder.isDone());
+        myOrder.setDone(true);
         orderRepository.save(myOrder);
     }
     public void checkOrderCanceled(int orderId) {
         MyOrder myOrder = orderRepository.findOne(orderId);
-        myOrder.setCanceled(!myOrder.isCanceled());
+        myOrder.setCanceled(true);
         orderRepository.save(myOrder);
     }
 }
