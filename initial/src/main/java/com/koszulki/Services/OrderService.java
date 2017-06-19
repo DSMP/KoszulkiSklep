@@ -39,7 +39,7 @@ public class OrderService {
     }
     public Page<MyOrder> getPageOrder(int page) {
         Pageable pageRequest = new PageRequest(page,6);
-        return orderRepository.findAll(pageRequest);
+        return orderRepository.findAllByOrderByIdAsc(pageRequest);
     }
 
     public void checkOrderDone(int orderId) {

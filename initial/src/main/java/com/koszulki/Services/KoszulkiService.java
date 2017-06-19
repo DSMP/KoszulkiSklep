@@ -22,7 +22,7 @@ public class KoszulkiService {
     public Page<Koszulka> getAllKoszulki(int page)
     {
         Pageable pageRequest = new PageRequest(page,6);
-        return koszulkiRepo.findAll(pageRequest);
+        return koszulkiRepo.findAllByOrderByIdAsc(pageRequest);
     }
     public List<Koszulka> getAllKoszulki(){
         return (List<Koszulka>) koszulkiRepo.findAll();

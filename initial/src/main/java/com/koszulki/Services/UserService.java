@@ -84,7 +84,7 @@ public class UserService {
 
     public Page<MyUser> getAllUsers(int pagei) {
         Pageable pageRequest = new PageRequest(pagei,6);
-        return userRepository.findAll(pageRequest);
+        return userRepository.findAllByOrderByIdAsc(pageRequest);
     }
 
     public void removeUser(Integer id) {
