@@ -45,7 +45,7 @@
 <div class="jumbotron">
     <div class="container text-center">
         <h1>Graphic Store</h1>
-        <p>T-shirts, Bilboards & Labels</p>
+        <p th:text="#{bannerSecTitle}"></p>
     </div>
 </div>
 
@@ -61,11 +61,11 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li><a href="index.html">Home</a></li>
-                <li class="active"><a th:href="'/koszulki'">T-Shirts</a></li>
-                <li><a href="/bilboards">Bilboards</a></li>
-                <li><a href="/labels">Labels</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li><a href="index.html" th:text="#{homeNavButton}">Home</a></li>
+                <li class="active"><a th:href="'/koszulki'" th:text="#{tshirtNavButton}">T-Shirts</a></li>
+                <li><a href="/bilboards" th:text="#{bilboardsNavButton}">Bilboards</a></li>
+                <li><a href="/labels" th:text="#{stickersNavButtn}">Labels</a></li>
+                <li><a href="/contact" th:text="#{contactNavButton}">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a sec:authorize="isAuthenticated()" sec:authentication="name"></a></li>
@@ -81,9 +81,9 @@
     <div class="row">
         <div class="col-md-offset-5">
             <form class="form-inline" th:action="${'/search'}">
-                <label>Search</label>
-                <input type="text" th:name="searchWord" placeholder="Search items">
-                <button type="submit" class="btn btn-primary">Search</button>
+                <label th:text="#{searchButton}">Search</label>
+                <input type="text" th:name="searchWord" th:placeholder="#{searchPlaceholder}">
+                <button type="submit" class="btn btn-primary" th:text="#{searchButton}"></button>
             </form>
         </div>
     </div>
@@ -97,13 +97,13 @@
                     <div class="panel-body"><img th:src="@{'data:image/jpg;base64,'+${item.getEncodedPicture()}}" class="img-responsive" style="width:100%" alt="Image"></div>
                     <div class="panel-footer">
                         <ul class="list-inline">
-                            <li><strong><p class="text-info" th:text="'Size: '+${item.size}"></p></strong></li>
-                            <li><strong><p class="text-info" th:text="'Price: '+${item.price}"></p></strong></li>
+                            <li><strong><p class="text-info" th:text="#{size}+${': '}+${item.size}"></p></strong></li>
+                            <li><strong><p class="text-info" th:text="#{price}+${': '}+${item.price}"></p></strong></li>
                         </ul>
                         <p>
-                            <a th:href="@{${'koszulki2'}(pagei = ${page.getNumber()}, id=${item.id})}" class="btn btn-warning btn-large">
+                            <a th:text="#{orderNow}" th:href="@{${'koszulki2'}(pagei = ${page.getNumber()}, id=${item.id})}" class="btn btn-warning btn-large">
                                 <span class="glyphicon-shopping-cart glyphicon">
-                                </span> Order Now
+                                </span>
                             </a>
                         </p>
                     </div>
@@ -115,19 +115,18 @@
 <div class="table-pagination text-center">
     <ul class="pagination">
         <li th:class="${page.getNumber() eq 0} ? 'disabled' : ''">
-            <a th:if="${page.hasPrevious()}" th:href="@{${'koszulki1'}(pagei=${page.getNumber()-1})}">Previous</a>
-            <a th:if="${not page.hasPrevious()}" th:href="@{${'#'}(pagei=${page.getNumber()})}">Previous</a>
+            <a th:if="${page.hasPrevious()}" th:href="@{${'koszulki1'}(pagei=${page.getNumber()-1})}" th:text="#{prev}">Previous</a>
+            <a th:if="${not page.hasPrevious()}" th:href="@{${'#'}(pagei=${page.getNumber()})}" th:text="#{prev}">Previous</a>
         </li>
         <li th:class="${page.getNumber() eq page.getTotalPages()-1} ? 'disabled' : ''">
-            <a th:if="${page.hasNext()}" th:href="@{${'koszulki1'}(pagei=${page.getNumber()+1})}">Next</a>
-            <a th:if="${not page.hasNext()}" th:href="@{${'#'}(pagei=${page.getNumber()})}">Next</a>
+            <a th:if="${page.hasNext()}" th:href="@{${'koszulki1'}(pagei=${page.getNumber()+1})}" th:text="#{next}">Next</a>
+            <a th:if="${not page.hasNext()}" th:href="@{${'#'}(pagei=${page.getNumber()})}" th:text="#{next}">Next</a>
         </li>
     </ul>
 </div>
 <br><br><br>
 
 <footer class="container-fluid text-center">
-    <h1 th:text="#{greeting}"></h1>
     <span th:text="#{lang.change}"></span>:
     <select id="locales">
         <option value=""></option>
