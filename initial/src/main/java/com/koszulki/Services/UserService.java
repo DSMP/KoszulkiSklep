@@ -48,12 +48,7 @@ public class UserService {
 
 
     public MyUser findUserByEmail(String email) {
-        List<MyUser> MyUsers = (List<MyUser>) userRepository.findAll();
-        for (int i = 0; i < MyUsers.size(); i++) {
-            if (MyUsers.get(i).getEmail().equals(email))
-                return MyUsers.get(i);
-        }
-        return null;
+        return userRepository.findByEmail(email);
     }
     public void register(MyUser user)
     {
