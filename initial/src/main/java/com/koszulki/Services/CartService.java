@@ -75,4 +75,13 @@ public class CartService {
         }
         return dbOrderList;
     }
+
+    public float getSumPrice(List<CartItem> cartItems) {
+        if (cartItems == null || cartItems.isEmpty()) return 0;
+        float sum = 0;
+        for (CartItem item : cartItems) {
+            sum += item.getPrice() * item.getQuantity();
+        }
+        return sum;
+    }
 }

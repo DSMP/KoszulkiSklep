@@ -34,6 +34,7 @@ public class CartController {
     {
         List<CartItem> cartItems = (List<CartItem>) httpSession.getAttribute("cartItems");
         model.addAttribute("cartItems", cartItems);
+        model.addAttribute("finalPrice", cartService.getSumPrice(cartItems));
         return "your-cart";
     }
     @RequestMapping(value = "/remove", method = RequestMethod.GET)

@@ -14,6 +14,7 @@ public class CartItem extends GrafphicThing{
         this.setId(grafphicThing.getId());
         this.setName(grafphicThing.getName());
         this.setPicture(grafphicThing.getPicture());
+        this.price = grafphicThing.getPrice();
         this.grafphicThing = grafphicThing;
     }
 

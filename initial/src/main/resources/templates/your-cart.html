@@ -79,6 +79,7 @@
                         <!--<p th:text="'Size: '+${item.size}"><p/>-->
                         <form th:action="@{/cart/changeQuantity}" method="post" role="form" autocomplete="off">
                             <input type="hidden" th:name="id" th:value="${item.id}"> </input>
+                            <strong><p class="text-info" th:text="'Price: '+${item.price}"></p></strong>
                             <table>
                                 <tr>
                                     <td><p th:text="'Quantity: '"></p></td>
@@ -111,6 +112,7 @@
 
 <div class="text-center form-group required">
     <form th:action="@{/cart/deliveryForm}" method="post" role="form" autocomplete="on">
+        <label class="control-label" th:text="'Final Price: '+${finalPrice}"></label>
         <label class="control-label">Put Your Adress: </label>
         <input class="input-sm" th:name="adress" placeholder="Your Adress" required/>
         <!--<input class="input-sm" th:name="phone" placeholder="Your phone"/>-->
