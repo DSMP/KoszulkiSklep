@@ -50,4 +50,10 @@ public class KoszulkiController {
         httpSession.setAttribute("cartItems", cartItems);
         return new ModelAndView("redirect:/koszulki1?pagei="+pagei);
     }
+    @RequestMapping(value = "/search")
+    public String searchItems(Model model, String searchWord)
+    {
+        model.addAttribute("page", koszulkiService.searchItems(0,searchWord));
+        return "searched-items";
+    }
 }

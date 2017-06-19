@@ -18,4 +18,5 @@ import org.springframework.data.repository.query.Param;
 public interface IGrafphicThingRepository<T extends GrafphicThing> extends PagingAndSortingRepository<T,Integer> {
 //    public Page<T> findAll(Pageable pageable); //findByPublishedIsTrueOrderByPublishedTimeDesc
     Page<T> findAllByOrderByIdAsc(Pageable pageable);
+    Page<T> findAllByNameContainingOrderByIdAsc(String name, Pageable pageable);
 }
