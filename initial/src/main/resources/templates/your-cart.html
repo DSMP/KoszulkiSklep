@@ -109,10 +109,11 @@
         <!--</li>-->
     <!--</ul>-->
 <!--</div>-->
-
+<div class="text-center">
+    <label class="control-label" th:text="'Final Price: '+${finalPrice}"></label>
+</div>
 <div class="text-center form-group required">
     <form th:action="@{/cart/deliveryForm}" method="post" role="form" autocomplete="on">
-        <label class="control-label" th:text="'Final Price: '+${finalPrice}"></label>
         <label class="control-label">Put Your Adress: </label>
         <input class="input-sm" th:name="adress" placeholder="Your Adress" required/>
         <!--<input class="input-sm" th:name="phone" placeholder="Your phone"/>-->
