@@ -55,7 +55,8 @@
                 <li><a href="#">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a sec:authorize="isAnonymous()" href="/login"><span class="glyphicon glyphicon-pawn"></span> Sign up</a></li>
+                <li><a sec:authorize="isAuthenticated()" sec:authentication="name"></a></li>
+                <li><a sec:authorize="isAnonymous()" href="/login"><span class="glyphicon glyphicon-pawn"></span> Log in</a></li>
                 <li><a sec:authorize="isAuthenticated()" href="/logout"><span class="glyphicon glyphicon-eject"></span> Logout</a></li>
                 <li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
             </ul>
