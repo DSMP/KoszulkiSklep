@@ -28,7 +28,7 @@ public class AdminOrderController {
         uiModel.addAttribute("page", page);
         return "admin/manage-orders";
     }
-    @RequestMapping(value = "1", method = RequestMethod.GET) //paging
+    @RequestMapping(value = "/paging", method = RequestMethod.GET) //paging
     public String getManageOrders(Model uiModel, @RequestParam Integer pagei)
     {
         Page<MyOrder> page = orderService.getPageOrder(pagei);

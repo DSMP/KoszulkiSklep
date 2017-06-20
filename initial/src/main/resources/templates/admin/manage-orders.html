@@ -30,13 +30,13 @@
         <h3 class="text-muted">Damian Smug Project <a href="/logout">Logout</a></h3>
         <nav>
             <ul class="nav nav-justified">
-                <li><a href="manage-panel.html">Home</a></li>
+                <li><a href="admin-panel.html">Home</a></li>
                 <li><a href="manage-koszulka.html">Manage T-shirts</a></li>
                 <li><a href="manage-bilboard.html">Manage Bilboards</a></li>
                 <li><a href="manage-naklejka.html">Manage Labels</a></li>
                 <li><a href="manage-other.html">Manage Others</a></li>
                 <li><a href="manage-users.html">Manage Users</a></li>
-                <li class="active"><a href="admin/manage-orders.html">Manage Orders</a></li>
+                <li class="active"><a href="manage-orders.html">Manage Orders</a></li>
             </ul>
         </nav>
     </div>
@@ -101,11 +101,11 @@
             <div class="table-pagination">
                 <ul class="pagination">
                     <li th:class="${page.getNumber() eq 0} ? 'disabled' : ''">
-                        <a th:if="${page.hasPrevious()}" th:href="@{${'/admin/manage-koszulka1'}(pagei=${page.getNumber()-1})}">Previous</a>
+                        <a th:if="${page.hasPrevious()}" th:href="@{${'/admin/manage-orders/paging'}(pagei=${page.getNumber()-1})}">Previous</a>
                         <a th:if="${not page.hasPrevious()}" th:href="@{${'#'}(pagei=${page.getNumber()})}">Previous</a>
                     </li>
                     <li th:class="${page.getNumber() eq page.getTotalPages()-1} ? 'disabled' : ''">
-                        <a th:if="${page.hasNext()}" th:href="@{${'/admin/manage-koszulka1'}(pagei=${page.getNumber()+1})}">Next</a>
+                        <a th:if="${page.hasNext()}" th:href="@{${'/admin/manage-orders/paging'}(pagei=${page.getNumber()+1})}">Next</a>
                         <a th:if="${not page.hasNext()}" th:href="@{${'#'}(pagei=${page.getNumber()})}">Next</a>
                     </li>
                 </ul>
